@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 
-@Service("DnsService")
+@Service("dnsService")
 public interface IDnsService {
 	
 	/**
