@@ -3,7 +3,6 @@ package com.xx.test.base;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,10 +19,5 @@ public class TestBase {
 	@Before
 	public void before() {
 
-	}
-	
-	@Test
-	public void testSome(){
-		logger.info("TestBase class method testSome running...");
 	}
 }
