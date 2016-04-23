@@ -3,6 +3,7 @@ package com.xx.test.mt.service.common.base.test;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
+import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,5 +22,13 @@ public class TestBase {
 	@Before
 	public void before() {
 
+	}
+	
+	/**
+	 * do something after test finish
+	 */
+	@After
+	public void teardown(){
+		
 	}
 }

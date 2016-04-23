@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 import com.xx.test.mt.model.IP;
+import com.xx.test.mt.service.common.base.test.TestBase;
 import com.xx.test.mt.service.dns.IDnsService;
 import com.xx.test.mt.service.ip.IIPService;
 
