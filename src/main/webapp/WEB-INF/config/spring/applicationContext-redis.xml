@@ -7,5 +7,15 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
-
+  <context:property-placeholder location="app.properties"/>
+  <bean id="redisCacheManager" class="com.xx.test.mt.common.cache.redis.RedisCacheManger">
+      <property name="pool" ref="shardedJedisPool"/>
+  </bean>
+  <!-- jedis 连接池配置-->
+  <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+    <property name="maxTotal"     value="${redis.pool.maxActive}" />  
+    <property name="maxIdle"       value="${redis.pool.maxIdle}" />  
+    <property name="maxWait"       value="${redis.pool.maxWait}" />  
+    <property name="testOnBorrow"  value="${redis.pool.testOnBorrow}" />  
+  </bean>
 </beans>
