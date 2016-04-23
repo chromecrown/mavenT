@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
-import com.xx.test.mt.service.common.base.test.TestBase;
+import com.xx.test.mt.common.test.TestBase;
 
 public class RedisTest extends TestBase{
 	
