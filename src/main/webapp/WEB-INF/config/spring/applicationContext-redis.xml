@@ -2,20 +2,48 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
-  <context:property-placeholder location="app.properties"/>
-  <bean id="redisCacheManager" class="com.xx.test.mt.common.cache.redis.RedisCacheManger">
+        
+  <bean id="redisCacheManager" class="com.xx.test.mt.common.cache.redis.RedisCacheManager">
       <property name="pool" ref="shardedJedisPool"/>
   </bean>
+  <!-- jedis 多个服务器配置-->
+  <bean id="jedisShardInfo1" class="redis.clients.jedis.JedisShardInfo">  
+    <constructor-arg index="0" value="${redis2.hostname}" />  
+    <constructor-arg index="1" value="${redis.port}" type="int" />  
+  </bean>	
+  
+  <bean id="jedisShardInfo2" class="redis.clients.jedis.JedisShardInfo">  
+    <constructor-arg index="0" value="${redis.hostname}" />  
+    <constructor-arg index="1" value="${redis.port}" type="int" />  
+  </bean>
+  
+  <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+	  <constructor-arg index="0" ref="jedisPoolConfig" />
+	  <constructor-arg index="1">
+		  <list>
+		      <ref bean="jedisShardInfo1" />
+			  <ref bean="jedisShardInfo2" />
+		  </list>
+	</constructor-arg>
+</bean>
   <!-- jedis 连接池配置-->
   <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">  
-    <property name="maxTotal"     value="${redis.pool.maxActive}" />  
+    <property name="maxTotal"     value="${redis.pool.maxTotle}" />  
     <property name="maxIdle"       value="${redis.pool.maxIdle}" />  
-    <property name="maxWait"       value="${redis.pool.maxWait}" />  
     <property name="testOnBorrow"  value="${redis.pool.testOnBorrow}" />  
   </bean>
+  <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.hostname}" />
+        <property name="port" value="${redis.port}" />
+        <property name="usePool" value="true" />
+        <property name="poolConfig" ref="jedisPoolConfig" />
+  </bean>
+  <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" 
+      p:connectionFactory-ref="jedisConnectionFactory" />
 </beans>

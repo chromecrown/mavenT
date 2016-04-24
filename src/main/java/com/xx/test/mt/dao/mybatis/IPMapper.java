@@ -1,5 +1,7 @@
 package com.xx.test.mt.dao.mybatis;
 
+import java.util.List;
+
 import com.xx.test.mt.model.IP;
 
 public interface IPMapper {
@@ -14,4 +16,6 @@ public interface IPMapper {
     int updateByPrimaryKeySelective(IP record);
 
     int updateByPrimaryKey(IP record);
+    
+    List<IP> getIPLst();
 }

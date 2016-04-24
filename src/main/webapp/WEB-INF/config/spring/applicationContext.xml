@@ -9,7 +9,10 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
+    <!-- 属性文件 -->
+    <context:property-placeholder location="classpath:app.properties"/>
+    
+    <!-- 激活注解 -->
 	<context:annotation-config />
 
 	<context:component-scan base-package="com.xx.test.mt">

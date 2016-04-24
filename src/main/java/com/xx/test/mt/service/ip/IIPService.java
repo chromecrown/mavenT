@@ -12,4 +12,6 @@ public interface IIPService {
 	public IP getIPById(Integer ipId);
 	
 	public List<IP> getIPLst();
+	
+	public List<IP> getIPLstFromDB();
 }
