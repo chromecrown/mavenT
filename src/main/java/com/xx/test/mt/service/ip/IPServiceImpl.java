@@ -12,7 +12,7 @@ public class IPServiceImpl implements IIPService{
 
 	public IP getIPById(Integer ipId) {
 		IP ipObj = new IP();
-		ipObj.setHostIP("1.2.3.4");
+		ipObj.setIp("1.2.3.4");
 		ipObj.setId(1);
 		ipObj.setInOut("out");
 		return ipObj;
@@ -24,7 +24,7 @@ public class IPServiceImpl implements IIPService{
 			IP obj = new IP();
 			obj.setId(i);
 			obj.setInOut("in");
-			obj.setHostIP("10.1.1."+String.valueOf(i));
+			obj.setIp("10.1.1."+String.valueOf(i));
 			ipLst.add(obj);
 		}
 		
