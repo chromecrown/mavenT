@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.test.mt.dao.mybatis.IPBelongMapper" >
+  <resultMap id="BaseResultMap" type="com.xx.test.mt.model.IPBelong" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="country_id" property="countryId" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="area_id" property="areaId" jdbcType="VARCHAR" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="region_id" property="regionId" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="county_id" property="countyId" jdbcType="VARCHAR" />
+    <result column="isp" property="isp" jdbcType="VARCHAR" />
+    <result column="isp_id" property="ispId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="insert_day" property="insertDay" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ip, country, country_id, area, area_id, region, region_id, city, city_id, county, 
+    county_id, isp, isp_id, update_time, operator, insert_day
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_a_ipbelong
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_a_ipbelong
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xx.test.mt.model.IPBelong" >
+    insert into t_a_ipbelong (id, ip, country, 
+      country_id, area, area_id, 
+      region, region_id, city, 
+      city_id, county, county_id, 
+      isp, isp_id, update_time, 
+      operator, insert_day)
+    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{countryId,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{areaId,jdbcType=VARCHAR}, 
+      #{region,jdbcType=VARCHAR}, #{regionId,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{countyId,jdbcType=VARCHAR}, 
+      #{isp,jdbcType=VARCHAR}, #{ispId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{insertDay,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xx.test.mt.model.IPBelong" >
+    insert into t_a_ipbelong
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="countryId != null" >
+        country_id,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="areaId != null" >
+        area_id,
+      </if>
+      <if test="region != null" >
+        region,
+      </if>
+      <if test="regionId != null" >
+        region_id,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="countyId != null" >
+        county_id,
+      </if>
+      <if test="isp != null" >
+        isp,
+      </if>
+      <if test="ispId != null" >
+        isp_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="insertDay != null" >
+        insert_day,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null" >
+        #{countryId,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null" >
+        #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="isp != null" >
+        #{isp,jdbcType=VARCHAR},
+      </if>
+      <if test="ispId != null" >
+        #{ispId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDay != null" >
+        #{insertDay,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xx.test.mt.model.IPBelong" >
+    update t_a_ipbelong
+    <set >
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null" >
+        country_id = #{countryId,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null" >
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        region_id = #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null" >
+        county_id = #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="isp != null" >
+        isp = #{isp,jdbcType=VARCHAR},
+      </if>
+      <if test="ispId != null" >
+        isp_id = #{ispId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDay != null" >
+        insert_day = #{insertDay,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.IPBelong" >
+    update t_a_ipbelong
+    set ip = #{ip,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      country_id = #{countryId,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=VARCHAR},
+      region = #{region,jdbcType=VARCHAR},
+      region_id = #{regionId,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      county_id = #{countyId,jdbcType=VARCHAR},
+      isp = #{isp,jdbcType=VARCHAR},
+      isp_id = #{ispId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      insert_day = #{insertDay,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

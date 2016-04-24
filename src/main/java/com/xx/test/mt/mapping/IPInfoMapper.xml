@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.test.mt.dao.mybatis.IPInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xx.test.mt.model.IPInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="linkmanemail" property="linkmanemail" jdbcType="VARCHAR" />
+    <result column="iptype" property="iptype" jdbcType="VARCHAR" />
+    <result column="typename" property="typename" jdbcType="VARCHAR" />
+    <result column="modelname" property="modelname" jdbcType="VARCHAR" />
+    <result column="idcroom" property="idcroom" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="insrt_time" property="insrtTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ip, linkmanemail, iptype, typename, modelname, idcroom, linkman, insrt_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_a_ipinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_a_ipinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xx.test.mt.model.IPInfo" >
+    insert into t_a_ipinfo (id, ip, linkmanemail, 
+      iptype, typename, modelname, 
+      idcroom, linkman, insrt_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{linkmanemail,jdbcType=VARCHAR}, 
+      #{iptype,jdbcType=VARCHAR}, #{typename,jdbcType=VARCHAR}, #{modelname,jdbcType=VARCHAR}, 
+      #{idcroom,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{insrtTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xx.test.mt.model.IPInfo" >
+    insert into t_a_ipinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="linkmanemail != null" >
+        linkmanemail,
+      </if>
+      <if test="iptype != null" >
+        iptype,
+      </if>
+      <if test="typename != null" >
+        typename,
+      </if>
+      <if test="modelname != null" >
+        modelname,
+      </if>
+      <if test="idcroom != null" >
+        idcroom,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="insrtTime != null" >
+        insrt_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanemail != null" >
+        #{linkmanemail,jdbcType=VARCHAR},
+      </if>
+      <if test="iptype != null" >
+        #{iptype,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="modelname != null" >
+        #{modelname,jdbcType=VARCHAR},
+      </if>
+      <if test="idcroom != null" >
+        #{idcroom,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="insrtTime != null" >
+        #{insrtTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xx.test.mt.model.IPInfo" >
+    update t_a_ipinfo
+    <set >
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanemail != null" >
+        linkmanemail = #{linkmanemail,jdbcType=VARCHAR},
+      </if>
+      <if test="iptype != null" >
+        iptype = #{iptype,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null" >
+        typename = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="modelname != null" >
+        modelname = #{modelname,jdbcType=VARCHAR},
+      </if>
+      <if test="idcroom != null" >
+        idcroom = #{idcroom,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="insrtTime != null" >
+        insrt_time = #{insrtTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.IPInfo" >
+    update t_a_ipinfo
+    set ip = #{ip,jdbcType=VARCHAR},
+      linkmanemail = #{linkmanemail,jdbcType=VARCHAR},
+      iptype = #{iptype,jdbcType=VARCHAR},
+      typename = #{typename,jdbcType=VARCHAR},
+      modelname = #{modelname,jdbcType=VARCHAR},
+      idcroom = #{idcroom,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      insrt_time = #{insrtTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

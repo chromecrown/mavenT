@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.test.mt.dao.mybatis.IPMapper" >
+  <resultMap id="BaseResultMap" type="com.xx.test.mt.model.IP" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="day" property="day" jdbcType="DATE" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="in_out" property="inOut" jdbcType="VARCHAR" />
+    <result column="src" property="src" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="grp" property="grp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, day, ip, in_out, src, insert_time, grp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_a_ip
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_a_ip
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xx.test.mt.model.IP" >
+    insert into t_a_ip (id, day, ip, in_out, 
+      src, insert_time, grp
+      )
+    values (#{id,jdbcType=INTEGER}, #{day,jdbcType=DATE}, #{ip,jdbcType=VARCHAR}, #{inOut,jdbcType=VARCHAR}, 
+      #{src,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{grp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xx.test.mt.model.IP" >
+    insert into t_a_ip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="inOut != null" >
+        in_out,
+      </if>
+      <if test="src != null" >
+        src,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="grp != null" >
+        grp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=DATE},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inOut != null" >
+        #{inOut,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grp != null" >
+        #{grp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xx.test.mt.model.IP" >
+    update t_a_ip
+    <set >
+      <if test="day != null" >
+        day = #{day,jdbcType=DATE},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inOut != null" >
+        in_out = #{inOut,jdbcType=VARCHAR},
+      </if>
+      <if test="src != null" >
+        src = #{src,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grp != null" >
+        grp = #{grp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.IP" >
+    update t_a_ip
+    set day = #{day,jdbcType=DATE},
+      ip = #{ip,jdbcType=VARCHAR},
+      in_out = #{inOut,jdbcType=VARCHAR},
+      src = #{src,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      grp = #{grp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
