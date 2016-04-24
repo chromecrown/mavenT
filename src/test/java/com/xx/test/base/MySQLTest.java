@@ -42,6 +42,16 @@ public class MySQLTest extends TestBase{
 	}
 	
 	/**
+	 * test get list of ip from mysql
+	 */
+	@Test
+	public void testGetLstFromDB(){
+		List<IP> lst = new ArrayList<IP>();
+		lst = ipService.getIPLstFromDB();
+		logger.info("==>ip list:"+JSON.toJSONString(lst));
+	}
+	
+	/**
 	 * get all dns list
 	 */
 	@Test
