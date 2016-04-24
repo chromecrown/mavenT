@@ -3,12 +3,21 @@ package com.xx.test.mt.service.ip;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xx.test.mt.dao.mybatis.IPMapper;
 import com.xx.test.mt.model.IP;
 
 @Service("ipService")
 public class IPServiceImpl implements IIPService{
+	
+	private IPMapper ipMapper;
+	
+	@Autowired
+	public void setIpMapper(IPMapper ipMapper) {
+		this.ipMapper = ipMapper;
+	}
 
 	public IP getIPById(Integer ipId) {
 		IP ipObj = new IP();
@@ -33,7 +42,7 @@ public class IPServiceImpl implements IIPService{
 	
 	public List<IP> getIPLstFromDB(){
 		List<IP> ipLst = new ArrayList<IP>();
-		
+		ipLst = ipMapper.getIPLst();
 		return ipLst;
 	}
 }

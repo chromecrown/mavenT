@@ -13,5 +13,9 @@ public interface IIPService {
 	
 	public List<IP> getIPLst();
 	
+	/**
+	 * get list comprise by ip
+	 * @return
+	 */
 	public List<IP> getIPLstFromDB();
 }
