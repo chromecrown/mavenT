@@ -5,9 +5,7 @@ import java.util.Date;
 public class GroupInfo {
     private Integer id;
 
-    private String usergrpcode;
-
-    private String usergrpname;
+    private String grpname;
 
     private String isenable;
 
@@ -21,20 +19,12 @@ public class GroupInfo {
         this.id = id;
     }
 
-    public String getUsergrpcode() {
-        return usergrpcode;
+    public String getGrpname() {
+        return grpname;
     }
 
-    public void setUsergrpcode(String usergrpcode) {
-        this.usergrpcode = usergrpcode == null ? null : usergrpcode.trim();
-    }
-
-    public String getUsergrpname() {
-        return usergrpname;
-    }
-
-    public void setUsergrpname(String usergrpname) {
-        this.usergrpname = usergrpname == null ? null : usergrpname.trim();
+    public void setGrpname(String grpname) {
+        this.grpname = grpname == null ? null : grpname.trim();
     }
 
     public String getIsenable() {

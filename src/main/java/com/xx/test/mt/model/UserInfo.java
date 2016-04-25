@@ -1,13 +1,23 @@
 package com.xx.test.mt.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserInfo {
-    private Integer id;
+	
+	private List<GroupInfo> groupList;
+	
+    public List<GroupInfo> getGroupList() {
+		return groupList;
+	}
+
+	public void setGroupList(List<GroupInfo> groupList) {
+		this.groupList = groupList;
+	}
+
+	private Integer id;
 
     private String username;
-
-    private Integer grpid;
 
     private Integer isenable;
 
@@ -27,14 +37,6 @@ public class UserInfo {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
-    }
-
-    public Integer getGrpid() {
-        return grpid;
-    }
-
-    public void setGrpid(Integer grpid) {
-        this.grpid = grpid;
     }
 
     public Integer getIsenable() {

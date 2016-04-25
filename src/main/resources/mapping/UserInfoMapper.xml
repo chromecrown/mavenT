@@ -4,12 +4,11 @@
   <resultMap id="BaseResultMap" type="com.xx.test.mt.model.UserInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="grpID" property="grpid" jdbcType="INTEGER" />
     <result column="isEnable" property="isenable" jdbcType="INTEGER" />
     <result column="last_login" property="lastLogin" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, grpID, isEnable, last_login
+    t_user.id, username, t_user.isEnable, last_login
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +21,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.xx.test.mt.model.UserInfo" >
-    insert into t_user (id, username, grpID, 
+    insert into t_user (id, username,
       isEnable, last_login)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{grpid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
       #{isenable,jdbcType=INTEGER}, #{lastLogin,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xx.test.mt.model.UserInfo" >
@@ -35,9 +34,6 @@
       </if>
       <if test="username != null" >
         username,
-      </if>
-      <if test="grpid != null" >
-        grpID,
       </if>
       <if test="isenable != null" >
         isEnable,
@@ -53,9 +49,6 @@
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="grpid != null" >
-        #{grpid,jdbcType=INTEGER},
-      </if>
       <if test="isenable != null" >
         #{isenable,jdbcType=INTEGER},
       </if>
@@ -70,9 +63,6 @@
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="grpid != null" >
-        grpID = #{grpid,jdbcType=INTEGER},
-      </if>
       <if test="isenable != null" >
         isEnable = #{isenable,jdbcType=INTEGER},
       </if>
@@ -85,9 +75,23 @@
   <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.UserInfo" >
     update t_user
     set username = #{username,jdbcType=VARCHAR},
-      grpID = #{grpid,jdbcType=INTEGER},
       isEnable = #{isenable,jdbcType=INTEGER},
       last_login = #{lastLogin,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <resultMap id="allUserWithGroupresultMap" type="com.xx.test.mt.model.UserInfo" extends="BaseResultMap">
+      <collection property="groupList" javaType="list" ofType="com.xx.test.mt.model.GroupInfo">
+          <id property="id" column="grpID"/>
+          <result property="grpname" column="grpName"/>
+      </collection>
+  </resultMap>
+  <select id="selectUserList" resultMap="allUserWithGroupresultMap">
+    select 
+    <include refid="Base_Column_List" />,
+    t_group.id as grpID,
+    t_group.grpName as grpName
+    from t_user
+	join t_user_grp on t_user.id=t_user_grp.userID
+	join t_group on  t_user_grp.groupID=t_group.id
+  </select>
 </mapper>

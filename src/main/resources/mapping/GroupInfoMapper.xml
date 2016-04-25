@@ -3,13 +3,12 @@
 <mapper namespace="com.xx.test.mt.dao.mybatis.GroupInfoMapper" >
   <resultMap id="BaseResultMap" type="com.xx.test.mt.model.GroupInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="usergrpCode" property="usergrpcode" jdbcType="VARCHAR" />
-    <result column="usergrpName" property="usergrpname" jdbcType="VARCHAR" />
+    <result column="grpName" property="grpname" jdbcType="VARCHAR" />
     <result column="isEnable" property="isenable" jdbcType="VARCHAR" />
     <result column="insrtTime" property="insrttime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, usergrpCode, usergrpName, isEnable, insrtTime
+    id, grpName, isEnable, insrtTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,10 +21,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.xx.test.mt.model.GroupInfo" >
-    insert into t_group (id, usergrpCode, usergrpName, 
-      isEnable, insrtTime)
-    values (#{id,jdbcType=INTEGER}, #{usergrpcode,jdbcType=VARCHAR}, #{usergrpname,jdbcType=VARCHAR}, 
-      #{isenable,jdbcType=VARCHAR}, #{insrttime,jdbcType=TIMESTAMP})
+    insert into t_group (id, grpName, isEnable, 
+      insrtTime)
+    values (#{id,jdbcType=INTEGER}, #{grpname,jdbcType=VARCHAR}, #{isenable,jdbcType=VARCHAR}, 
+      #{insrttime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xx.test.mt.model.GroupInfo" >
     insert into t_group
@@ -33,11 +32,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="usergrpcode != null" >
-        usergrpCode,
-      </if>
-      <if test="usergrpname != null" >
-        usergrpName,
+      <if test="grpname != null" >
+        grpName,
       </if>
       <if test="isenable != null" >
         isEnable,
@@ -50,11 +46,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="usergrpcode != null" >
-        #{usergrpcode,jdbcType=VARCHAR},
-      </if>
-      <if test="usergrpname != null" >
-        #{usergrpname,jdbcType=VARCHAR},
+      <if test="grpname != null" >
+        #{grpname,jdbcType=VARCHAR},
       </if>
       <if test="isenable != null" >
         #{isenable,jdbcType=VARCHAR},
@@ -67,11 +60,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xx.test.mt.model.GroupInfo" >
     update t_group
     <set >
-      <if test="usergrpcode != null" >
-        usergrpCode = #{usergrpcode,jdbcType=VARCHAR},
-      </if>
-      <if test="usergrpname != null" >
-        usergrpName = #{usergrpname,jdbcType=VARCHAR},
+      <if test="grpname != null" >
+        grpName = #{grpname,jdbcType=VARCHAR},
       </if>
       <if test="isenable != null" >
         isEnable = #{isenable,jdbcType=VARCHAR},
@@ -84,8 +74,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.GroupInfo" >
     update t_group
-    set usergrpCode = #{usergrpcode,jdbcType=VARCHAR},
-      usergrpName = #{usergrpname,jdbcType=VARCHAR},
+    set grpName = #{grpname,jdbcType=VARCHAR},
       isEnable = #{isenable,jdbcType=VARCHAR},
       insrtTime = #{insrttime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
