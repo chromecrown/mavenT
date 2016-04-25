@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.test.mt.dao.mybatis.MenuInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xx.test.mt.model.MenuInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="menuID" property="menuid" jdbcType="VARCHAR" />
+    <result column="menuCode" property="menucode" jdbcType="INTEGER" />
+    <result column="menuName" property="menuname" jdbcType="VARCHAR" />
+    <result column="parentCode" property="parentcode" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="cssClass" property="cssclass" jdbcType="VARCHAR" />
+    <result column="menuHref" property="menuhref" jdbcType="VARCHAR" />
+    <result column="target" property="target" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="isEnable" property="isenable" jdbcType="VARCHAR" />
+    <result column="isVisual" property="isvisual" jdbcType="VARCHAR" />
+    <result column="isDeleted" property="isdeleted" jdbcType="VARCHAR" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, menuID, menuCode, menuName, parentCode, icon, cssClass, menuHref, target, weight, 
+    isEnable, isVisual, isDeleted, operator, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xx.test.mt.model.MenuInfo" >
+    insert into t_menu (id, menuID, menuCode, 
+      menuName, parentCode, icon, 
+      cssClass, menuHref, target, 
+      weight, isEnable, isVisual, 
+      isDeleted, operator, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{menuid,jdbcType=VARCHAR}, #{menucode,jdbcType=INTEGER}, 
+      #{menuname,jdbcType=VARCHAR}, #{parentcode,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{cssclass,jdbcType=VARCHAR}, #{menuhref,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=INTEGER}, #{isenable,jdbcType=VARCHAR}, #{isvisual,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xx.test.mt.model.MenuInfo" >
+    insert into t_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="menuid != null" >
+        menuID,
+      </if>
+      <if test="menucode != null" >
+        menuCode,
+      </if>
+      <if test="menuname != null" >
+        menuName,
+      </if>
+      <if test="parentcode != null" >
+        parentCode,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="cssclass != null" >
+        cssClass,
+      </if>
+      <if test="menuhref != null" >
+        menuHref,
+      </if>
+      <if test="target != null" >
+        target,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="isenable != null" >
+        isEnable,
+      </if>
+      <if test="isvisual != null" >
+        isVisual,
+      </if>
+      <if test="isdeleted != null" >
+        isDeleted,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null" >
+        #{menuid,jdbcType=VARCHAR},
+      </if>
+      <if test="menucode != null" >
+        #{menucode,jdbcType=INTEGER},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null" >
+        #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="cssclass != null" >
+        #{cssclass,jdbcType=VARCHAR},
+      </if>
+      <if test="menuhref != null" >
+        #{menuhref,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null" >
+        #{isenable,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisual != null" >
+        #{isvisual,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xx.test.mt.model.MenuInfo" >
+    update t_menu
+    <set >
+      <if test="menuid != null" >
+        menuID = #{menuid,jdbcType=VARCHAR},
+      </if>
+      <if test="menucode != null" >
+        menuCode = #{menucode,jdbcType=INTEGER},
+      </if>
+      <if test="menuname != null" >
+        menuName = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null" >
+        parentCode = #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="cssclass != null" >
+        cssClass = #{cssclass,jdbcType=VARCHAR},
+      </if>
+      <if test="menuhref != null" >
+        menuHref = #{menuhref,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        target = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null" >
+        isEnable = #{isenable,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisual != null" >
+        isVisual = #{isvisual,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        isDeleted = #{isdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.MenuInfo" >
+    update t_menu
+    set menuID = #{menuid,jdbcType=VARCHAR},
+      menuCode = #{menucode,jdbcType=INTEGER},
+      menuName = #{menuname,jdbcType=VARCHAR},
+      parentCode = #{parentcode,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      cssClass = #{cssclass,jdbcType=VARCHAR},
+      menuHref = #{menuhref,jdbcType=VARCHAR},
+      target = #{target,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER},
+      isEnable = #{isenable,jdbcType=VARCHAR},
+      isVisual = #{isvisual,jdbcType=VARCHAR},
+      isDeleted = #{isdeleted,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.test.mt.dao.mybatis.RoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.xx.test.mt.model.RoleMenu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="roleCode" property="rolecode" jdbcType="VARCHAR" />
+    <result column="menuCode" property="menucode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roleCode, menuCode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_role_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xx.test.mt.model.RoleMenu" >
+    insert into t_role_menu (id, roleCode, menuCode
+      )
+    values (#{id,jdbcType=INTEGER}, #{rolecode,jdbcType=VARCHAR}, #{menucode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xx.test.mt.model.RoleMenu" >
+    insert into t_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rolecode != null" >
+        roleCode,
+      </if>
+      <if test="menucode != null" >
+        menuCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rolecode != null" >
+        #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="menucode != null" >
+        #{menucode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xx.test.mt.model.RoleMenu" >
+    update t_role_menu
+    <set >
+      <if test="rolecode != null" >
+        roleCode = #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="menucode != null" >
+        menuCode = #{menucode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.RoleMenu" >
+    update t_role_menu
+    set roleCode = #{rolecode,jdbcType=VARCHAR},
+      menuCode = #{menucode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
