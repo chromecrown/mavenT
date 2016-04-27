@@ -1,4 +1,4 @@
-package com.xx.test.base;
+package com.xx.test;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
