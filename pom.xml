@@ -163,7 +163,7 @@
 		    <artifactId>quartz</artifactId>
 		    <exclusions>  
 	            <exclusion>  
-	                <groupId>c3p0</groupId>  
+	                <groupId>com.mchange</groupId>  
 	                <artifactId>c3p0</artifactId>  
 	            </exclusion>  
 	        </exclusions>
