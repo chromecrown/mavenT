@@ -15,6 +15,7 @@ import org.quartz.Trigger;
 
 import com.xx.test.mt.common.test.TestBase;
 import com.xx.test.mt.job.HelloJob;
+import com.xx.test.mt.scheduler.ScheduleTest;
 
 public class QuartzTest extends TestBase {
 
@@ -46,5 +47,11 @@ public class QuartzTest extends TestBase {
 		} catch (SchedulerException se) {
 			se.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testStartSchedule(){
+		ScheduleTest schedule = new ScheduleTest();
+		schedule.startSchedule();
 	}
 }
