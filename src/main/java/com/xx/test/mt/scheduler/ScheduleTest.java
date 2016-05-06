@@ -1,6 +1,5 @@
 package com.xx.test.mt.scheduler;
 
-import java.text.ParseException;
 import java.util.List;
 
 import org.quartz.JobBuilder;
@@ -23,10 +22,10 @@ public class ScheduleTest {
 	private static String JOB_GROUP_NAME = "ddlib";
 	private static String TRIGGER_GROUP_NAME = "ddlibTrigger";
 
-	public static void main(String[] args) throws SchedulerException, ParseException {
-		startSchedule();
-		// resumeJob();
-	}
+//	public static void main(String[] args) throws SchedulerException, ParseException {
+//		startSchedule();
+//		// resumeJob();
+//	}
 
 	/**
 	 * 开始一个simpleSchedule()调度
@@ -34,11 +33,17 @@ public class ScheduleTest {
 	public static void startSchedule() {
 		try {
 			// 1、创建一个JobDetail实例，指定Quartz任务执行类任务名，任务组
-			JobDetail jobDetail = JobBuilder.newJob(MyJob.class).withIdentity("job1_1", "jGroup1").build();
+			JobDetail jobDetail = JobBuilder
+					.newJob(MyJob.class)
+					.withIdentity("job1_1", "jGroup1")
+					.build();
 			SimpleScheduleBuilder.simpleSchedule();
 			// 2、创建Trigger设置执行次数
 			SimpleScheduleBuilder builder = SimpleScheduleBuilder.repeatSecondlyForTotalCount(100);
-			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1_1", "tGroup1").startNow()
+			Trigger trigger = TriggerBuilder
+					.newTrigger()
+					.withIdentity("trigger1_1", "tGroup1")
+					.startNow()
 					.withSchedule(builder).build();
 			// 3、创建Scheduler
 			Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
