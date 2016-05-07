@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE tiles-definitions PUBLIC   
+    "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"  
+    "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">  
+  
+<tiles-definitions>  
+    <!--  
+        定义通用的布局 
+     -->  
+    <definition name="template" template="/WEB-INF/view/main_template.jsp">  
+        <put-attribute name="top" value="/WEB-INF/view/title.jsp"/>  
+    </definition>  
+    <!--  
+        定义main的tiles 
+     -->  
+    <definition name="main" extends="template">  
+        <put-attribute name="content" value="/WEB-INF/view/main.jsp"/>  
+    </definition>  
+</tiles-definitions> 
