@@ -3,8 +3,6 @@ package com.xx.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +13,6 @@ import com.xx.test.mt.model.UserInfo;
 import com.xx.test.mt.service.mgr.usr.IUserService;
 
 public class UserTest extends TestBase{
-	protected Log logger = LogFactory.getLog(UserTest.class);
 	
 	private IUserService userService;
 	
@@ -29,7 +26,7 @@ public class UserTest extends TestBase{
 	public void testUserLst(){
 		List<UserInfo> userLst = new ArrayList<UserInfo>();
 		userLst = userService.getUserLst();
-		logger.info("getted user list :" + JSON.toJSONString(userLst));
-		logger.info("getted user list with WithDateFormat :" + JSON.toJSONStringWithDateFormat(userLst,"yyyy-MM-dd HH:mm:ss"));
+		System.out.println("getted user list :" + JSON.toJSONString(userLst));
+		System.out.println("getted user list with WithDateFormat :" + JSON.toJSONStringWithDateFormat(userLst,"yyyy-MM-dd HH:mm:ss"));
 	}
 }

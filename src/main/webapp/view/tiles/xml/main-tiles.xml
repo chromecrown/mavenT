@@ -7,13 +7,13 @@
     <!--  
         定义通用的布局 
      -->  
-    <definition name="template" template="view/tiles/main_template.jsp">  
-        <put-attribute name="top" value="view/tiles/title.jsp"/>  
+    <definition name="template" template="WEB-INF/view/tiles/main_template.jsp">  
+        <put-attribute name="top" value="WEB-INF/view/tiles/title.jsp"/>  
     </definition>  
     <!--  
         定义main的tiles 
      -->  
     <definition name="main" extends="template">  
-        <put-attribute name="content" value="view/tiles/main.jsp"/>  
+        <put-attribute name="content" value="WEB-INF/view/tiles/main.jsp"/>  
     </definition>  
 </tiles-definitions> 

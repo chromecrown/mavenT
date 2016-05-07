@@ -1,7 +1,5 @@
 package com.xx.test.mt.controller.ip;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import com.xx.test.mt.service.ip.IIPService;
 @Controller
 @RequestMapping("/ip")
 public class IPController {
-	private static Logger log = LoggerFactory.getLogger(IPController.class);
 	
 	private IIPService ipService;
 	
@@ -26,7 +23,7 @@ public class IPController {
 
 	@RequestMapping(value="/view",method=RequestMethod.GET)
 	public String getIPById(@RequestParam("ipId") Integer ipId,Model model){
-		log.info("-->ipId:"+ipId);
+		System.out.println("-->ipId:"+ipId);
 		IP ip = ipService.getIPById(ipId);
 		model.addAttribute("ip",ip);
 		return "ip/ip_main";
