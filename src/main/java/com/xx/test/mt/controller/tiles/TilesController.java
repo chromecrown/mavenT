@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/tilesShow")
 public class TilesController {
 	
-	@RequestMapping(value="/",method=RequestMethod.GET)
+	@RequestMapping(value={"/",""},method=RequestMethod.GET)
 	public String showTilesMain(Model model){
-		System.out.print("in method showTilesMain");
+		System.out.println("in method showTilesMain");
 		return "main";
 	}
 	@RequestMapping(value="/about",method=RequestMethod.GET)
 	public String showAbout(Model model){
-		System.out.print("in method showTilesMain");
+		System.out.println("in method showAbout test maven auto update");
 		return "about";
 	}
 }
