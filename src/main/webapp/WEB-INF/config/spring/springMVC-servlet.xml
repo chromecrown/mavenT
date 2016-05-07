@@ -84,7 +84,7 @@
     <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
         <property name="definitions">
             <list>
-               <value>WEB-INF/view/tiles/xml/main-tiles.xml</value>
+               <value>/WEB-INF/view/tiles/xml/main-tiles.xml</value>
             </list>
         </property>
     </bean>

@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/tilesShow")
 public class TilesController {
 	
-	@RequestMapping(value="/view",method=RequestMethod.GET)
-	public String getIPById(Model model){
-		
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String showTilesMain(Model model){
+		System.out.print("in method showTilesMain");
 		return "main";
+	}
+	@RequestMapping(value="/about",method=RequestMethod.GET)
+	public String showAbout(Model model){
+		System.out.print("in method showTilesMain");
+		return "about";
 	}
 }
