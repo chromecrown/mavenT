@@ -8,7 +8,8 @@
         定义通用的布局 
      -->  
     <definition name="template" template="/WEB-INF/view/tiles/main_template.jsp">  
-        <put-attribute name="top" value="/WEB-INF/view/tiles/top.jsp"/>  
+        <put-attribute name="top" value="/WEB-INF/view/tiles/top.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/view/tiles/menu.jsp"/>
     </definition>  
     <!--  
         定义main的tiles 
