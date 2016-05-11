@@ -8,12 +8,13 @@
 <title>Insert title here</title>  
 <style type="text/css">  
     body{  
-        background-color: rgb(95, 2, 2);  
+        background-color: green;  
     }  
 </style>  
 </head>  
 <body>  
-    <t:insertAttribute name="top"/>  
+    <t:insertAttribute name="top"/>
+    <t:insertAttribute name="menu"/>
     <t:insertAttribute name="content"/>  
 </body>  
 </html>
