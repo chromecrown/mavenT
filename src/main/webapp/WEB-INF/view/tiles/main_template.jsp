@@ -8,8 +8,12 @@
 
 <script type="text/javascript" src="resource/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="resource/js/zTree/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="resource/js/zTree/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="resource/js/zTree/jquery.ztree.exedit.js"></script>
+
 
 <link rel="stylesheet" href="resource/css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="resource/css/zTree/metroStyle/metroStyle.css" type="text/css">
 <title>Main</title>  
 <style type="text/css">  
     body{  
