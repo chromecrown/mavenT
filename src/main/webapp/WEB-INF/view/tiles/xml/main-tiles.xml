@@ -20,4 +20,7 @@
     <definition name="about" extends="template">  
         <put-attribute name="content" value="/WEB-INF/view/tiles/about.jsp"/>  
     </definition>  
+    <definition name="menu" extends="template">  
+        <put-attribute name="content" value="/WEB-INF/view/tiles/menu.jsp"/>  
+    </definition>  
 </tiles-definitions> 

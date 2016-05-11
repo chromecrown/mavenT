@@ -27,7 +27,7 @@
 		annotation-driven HandlerMapping -->
 
 	<!-- 静态资源处理， css， js， imgs -->
-	<mvc:resources mapping="/resource/**" location="/resource/" />
+	<mvc:resources mapping="/resource/**" location="/WEB-INF/resource/" />
 
 
 	<!-- 配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 
@@ -81,7 +81,7 @@
     -->
     <!-- -->
     <bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"/>
-    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" lazy-init="false">
         <property name="definitions">
             <list>
                <value>/WEB-INF/view/tiles/xml/main-tiles.xml</value>
