@@ -6,18 +6,24 @@
 <head>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script type="text/javascript" src="resource/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="resource/js/zTree/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="resource/js/zTree/jquery.ztree.excheck.js"></script>
-<script type="text/javascript" src="resource/js/zTree/jquery.ztree.exedit.js"></script>
+<script  src="resource/js/jquery-2.1.1.js"></script>
+<script  src="resource/js/zTree/jquery.ztree.core.js"></script>
+<script src="resource/js/zTree/jquery.ztree.excheck.js"></script>
+<script src="resource/js/zTree/jquery.ztree.exedit.js"></script>
+<script src="resource/js/sco/sco.message.js"></script>
+<script src="resource/js/sco/sco.modal.js"></script>
+<script src="resource/js/sco/sco.confirm.js"></script>
 
 
 <link rel="stylesheet" href="resource/css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">
 <link rel="stylesheet" href="resource/css/zTree/metroStyle/metroStyle.css" type="text/css">
+<link rel="stylesheet" href="resource/css/sco/scojs.css" type="text/css">
+<link rel="stylesheet" href="resource/css/sco/sco.message.css" type="text/css">
+
 <title>Main</title>  
 <style type="text/css">  
     body{  
-        background-color: green;  
+        background-color: #FFFACD;  
     }  
 </style>  
 </head>  
