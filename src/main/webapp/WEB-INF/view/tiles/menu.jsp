@@ -9,7 +9,7 @@
         <ul id="myTree" class="ztree"></ul>
     </div>
 </div>
-<SCRIPT type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
         var setting = {
             view: {
                 addHoverDom: addHoverDom,
@@ -117,4 +117,4 @@
           });
         }
         loadMenuData();
-</SCRIPT>
+</script>
