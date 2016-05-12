@@ -25,6 +25,12 @@
     from t_a_ip
     limit 100
   </select>
+  <select id="getIPPageLst" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_a_ip
+    limit #{start},#{offset}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_a_ip
     where id = #{id,jdbcType=INTEGER}
