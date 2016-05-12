@@ -82,5 +82,4 @@
             $("#addBtn_"+treeNode.tId).unbind().remove();
         };
         //-->
-    </SCRIPT>
 </SCRIPT>
