@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  
-    pageEncoding="UTF-8"%>  
-<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>  
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>  
 <html>  
 <head>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<base href="<%=basePath%>">
+  
 <script  src="resource/js/jquery-2.1.1.js"></script>
 <script  src="resource/js/zTree/jquery.ztree.core.js"></script>
 <script src="resource/js/zTree/jquery.ztree.excheck.js"></script>
