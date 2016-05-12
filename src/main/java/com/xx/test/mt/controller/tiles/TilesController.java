@@ -47,6 +47,7 @@ public class TilesController {
 	@RequestMapping(value="/loadMenuData",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Object> getMenuData(){
+		System.out.println("enter in method getMenuData");
 		List<Object> lstMenu = new ArrayList<Object>();
 		
 		Map<String,Object> a = new HashMap<String,Object>();
@@ -54,6 +55,7 @@ public class TilesController {
 		a.put("pId",0);
 		a.put("name","root");
 		a.put("open",true);
+		a.put("isParent",true);
 		lstMenu.add(a);
 		
 		Map<String,Object> b = new HashMap<String,Object>();
@@ -61,8 +63,30 @@ public class TilesController {
 		b.put("pId",1);
 		b.put("name","Leaf1");
 		b.put("open",true);
+		b.put("isParent",false);
 		lstMenu.add(b);
 		
+		Map<String,Object> c = new HashMap<String,Object>();
+		c.put("id",2);
+		c.put("pId",0);
+		c.put("name","乐视");
+		c.put("open",true);
+		c.put("isParent",true);
+		c.put("url","http://www.le.com");
+		c.put("target","_blank");
+		lstMenu.add(c);
+		
+		Map<String,Object> d = new HashMap<String,Object>();
+		d.put("id",3);
+		d.put("pId",0);
+		d.put("name","腾讯");
+		d.put("open",true);
+		d.put("isParent",true);
+		d.put("url","http://www.qq.com");
+		d.put("target","_blank");
+		lstMenu.add(d);
+		
+		System.out.println("will leave method getMenuData");
 		return lstMenu;
 	}
 }

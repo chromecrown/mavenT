@@ -1,7 +1,12 @@
-<h1>Metro Style</h1>
+<h1>zTreeMetroStyle</h1>
 <div class="content_wrap">
     <div class="zTreeDemoBackground left">
         <ul id="treeMenu" class="ztree"></ul>
+    </div>
+</div>
+<div class="content_wrap">
+    <div class="zTreeDemoBackground right">
+        <ul id="myTree" class="ztree"></ul>
     </div>
 </div>
 <SCRIPT type="text/javascript" charset="utf-8">
@@ -21,6 +26,13 @@
             },
             edit: {
                 enable: true
+            }
+        };
+        var myTreeSetting = {
+            data: {
+                simpleData: {
+                    enable: true
+                }
             }
         };
 
@@ -53,12 +65,11 @@
             { id:232, pId:23, name:"Leaf232"},
             { id:233, pId:23, name:"Leaf233"},
             { id:234, pId:23, name:"Leaf234"},
-            { id:3, pId:0, name:"P3", isParent:true}
+            { id:3, pId:0, name:"toBaidu", isParent:true}
         ];
 
         $(document).ready(function(){
             $.fn.zTree.init($("#treeMenu"), setting, zNodes);
-            loadMenuData();
         });
 
         var newCount = 1;
@@ -84,13 +95,19 @@
         	var argObj = {};
         	$.ajax({
     			type:"POST",
-    			url:"/loadMenuData/",
+    			url:"loadMenuData/",
     			data:argObj,
     			dataType:"text",
     	  		beforeSend:function(XMLHttpRequest){
     	      	},
     		   	success:function(data,status){
+    	      		$.scojs_message("information load success", $.scojs_message.TYPE_OK);
     		   		console.log("return data=>"+JSON.stringify(data));
+    		   		console.log("return type of data=>"+typeof(data));
+    		   		var jsonData = $.parseJSON(data);
+    		   		console.log("return type of jsonData=>"+typeof(jsonData));
+    		   		
+    		   		$.fn.zTree.init($("#myTree"), myTreeSetting, jsonData);
     		   	},
     	      	complete:function(XMLHttpRequest,status){
     	      	},
@@ -99,4 +116,5 @@
     	      	}
           });
         }
+        loadMenuData();
 </SCRIPT>
