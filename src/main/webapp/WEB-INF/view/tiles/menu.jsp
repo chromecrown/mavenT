@@ -1,14 +1,10 @@
 <h1>Metro Style</h1>
-<h6>[ file path: super/metro.html ]</h6>
 <div class="content_wrap">
     <div class="zTreeDemoBackground left">
-        <ul id="treeDemo" class="ztree"></ul>
+        <ul id="treeMenu" class="ztree"></ul>
     </div>
 </div>
-
-
 <SCRIPT type="text/javascript" charset="utf-8">
-        <!--
         var setting = {
             view: {
                 addHoverDom: addHoverDom,
@@ -61,7 +57,8 @@
         ];
 
         $(document).ready(function(){
-            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            $.fn.zTree.init($("#treeMenu"), setting, zNodes);
+            loadMenuData();
         });
 
         var newCount = 1;
@@ -73,7 +70,7 @@
             sObj.after(addStr);
             var btn = $("#addBtn_"+treeNode.tId);
             if (btn) btn.bind("click", function(){
-                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                var zTree = $.fn.zTree.getZTreeObj("treeMenu");
                 zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
                 return false;
             });
@@ -81,5 +78,25 @@
         function removeHoverDom(treeId, treeNode) {
             $("#addBtn_"+treeNode.tId).unbind().remove();
         };
-        //-->
+        
+        //load menu data
+        function loadMenuData(){
+        	var argObj = {};
+        	$.ajax({
+    			type:"POST",
+    			url:"/loadMenuData/",
+    			data:argObj,
+    			dataType:"text",
+    	  		beforeSend:function(XMLHttpRequest){
+    	      	},
+    		   	success:function(data,status){
+    		   		console.log("return data=>"+JSON.stringify(data));
+    		   	},
+    	      	complete:function(XMLHttpRequest,status){
+    	      	},
+    	      	error:function(){
+    	      		$.scojs_message("information msg", $.scojs_message.TYPE_ERROR);
+    	      	}
+          });
+        }
 </SCRIPT>
