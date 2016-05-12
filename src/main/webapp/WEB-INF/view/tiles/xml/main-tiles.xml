@@ -23,4 +23,7 @@
     <definition name="menu" extends="template">  
         <put-attribute name="content" value="/WEB-INF/view/tiles/menu.jsp"/>  
     </definition>  
+    <definition name="ip" extends="template">  
+        <put-attribute name="content" value="/WEB-INF/view/tiles/ip.jsp"/>  
+    </definition>  
 </tiles-definitions> 

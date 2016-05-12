@@ -1,5 +1,7 @@
 package com.xx.test.mt.controller.ip;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +23,18 @@ public class IPController {
 		this.ipService = ipService;
 	}
 
-	@RequestMapping(value="/view",method=RequestMethod.GET)
+	@RequestMapping(value="/info",method=RequestMethod.GET)
 	public String getIPById(@RequestParam("ipId") Integer ipId,Model model){
 		System.out.println("-->ipId:"+ipId);
 		IP ip = ipService.getIPById(ipId);
 		model.addAttribute("ip",ip);
 		return "ip/ip_main";
+	}
+	
+	@RequestMapping(value="/lst",method=RequestMethod.GET)
+	public String getIPLst(Model model){
+		List<IP> lst = ipService.getIPLstFromDB();
+		model.addAttribute("lst",lst);
+		return "ip";
 	}
 }

@@ -27,7 +27,7 @@
 		annotation-driven HandlerMapping -->
 
 	<!-- 静态资源处理， css， js， imgs -->
-	<mvc:resources mapping="/resource/**" location="/WEB-INF/resource/" />
+	<mvc:resources mapping="resource/**" location="/WEB-INF/resource/**" />
 
 
 	<!-- 配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 
