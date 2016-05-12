@@ -2,6 +2,7 @@ package com.xx.test.mt.service.ip;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,12 @@ public class IPServiceImpl implements IIPService{
 	public List<IP> getIPLstFromDB(){
 		List<IP> ipLst = new ArrayList<IP>();
 		ipLst = ipMapper.getIPLst();
+		return ipLst;
+	}
+	
+	public List<IP> getIPPageLst(Map arg){
+		List<IP> ipLst = new ArrayList<IP>();
+		ipLst = ipMapper.getIPPageLst(arg);
 		return ipLst;
 	}
 }
