@@ -26,11 +26,13 @@ public class AppInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
+		boolean isAsync = request.isAsyncStarted();
 		String contextPath = request.getContextPath();
 		String uri = request.getRequestURI();
 		HttpSession session = request.getSession();
-		System.out.println("contextPath:" + contextPath);
-		System.out.println("uri" + uri);
+		System.out.println("class AppInterceptor,method preHandle->contextPath:" + contextPath);
+		System.out.println("class AppInterceptor,method preHandle->uri:" + uri);
+		System.out.println("class AppInterceptor,method isAsync->isAsync:" + isAsync);
 		return true;
 	}
 }

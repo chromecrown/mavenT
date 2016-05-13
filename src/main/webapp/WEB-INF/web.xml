@@ -1,8 +1,7 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name>mavenT</display-name>
   <!-- Spring应用上下文， 理解层次化的ApplicationContext -->
   <context-param>
@@ -27,6 +26,7 @@
           <param-value>/WEB-INF/config/spring/springMVC-servlet.xml</param-value>
         </init-param>
 		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springMVC</servlet-name>

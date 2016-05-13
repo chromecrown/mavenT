@@ -28,6 +28,14 @@
 
 	<!-- 静态资源处理， css， js， imgs -->
 	<mvc:resources mapping="resource/**" location="/WEB-INF/resource/" />
+	
+	<!-- interceptors configuration -->
+	<mvc:interceptors>  
+        <mvc:interceptor>  
+            <mvc:mapping path="/*"/>  
+            <bean class="com.xx.test.mt.common.interceptor.AppInterceptor"/>  
+        </mvc:interceptor>  
+    </mvc:interceptors>
 
 
 	<!-- 配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 
