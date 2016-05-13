@@ -6,6 +6,7 @@ import java.util.Map;
 import com.xx.test.mt.model.IP;
 
 public interface IPMapper {
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(IP record);
@@ -20,5 +21,7 @@ public interface IPMapper {
     
     List<IP> getIPLst();
     
-    List<IP> getIPPageLst(Map arg);
+    List<IP> getIPPageLst(Map<String,Object> arg);
+    
+    int getIPCnt();
 }
