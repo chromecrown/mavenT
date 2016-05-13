@@ -23,5 +23,5 @@ public interface IPMapper {
     
     List<IP> getIPPageLst(Map<String,Object> arg);
     
-    int getIPCnt();
+    int getIPCnt(Map<String,Object> arg);
 }

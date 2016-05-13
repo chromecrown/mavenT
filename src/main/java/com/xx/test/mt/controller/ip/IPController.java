@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,19 +56,15 @@ public class IPController {
 	}
 	
 	/**
-	 * 分页查询IP数据
+	 * 分页查询数据
 	 * 
-	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value="/pageLst",method=RequestMethod.POST)
 	@ResponseBody
-	public List<IP> getIPPageLst(){
-		Map<String,Object> arg = new HashMap<String,Object>();
-		arg.put("start",0);
-		arg.put("offset",5);
-		List<IP> lst = ipService.getIPPageLst(arg);
-		System.out.println("getIPPageLst:"+lst);
-		return lst;
+	public Map<String,Object> getIPPageLst(HttpServletRequest request){
+		Map<String,Object> retVal = ipService.getIPPageLst(request);
+		System.out.println("getIPPageLst:"+retVal);
+		return retVal;
 	}
 }
