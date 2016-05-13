@@ -3,6 +3,8 @@ package com.xx.test.mt.service.ip;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 
 import com.xx.test.mt.model.IP;
@@ -26,5 +28,13 @@ public interface IIPService {
 	 * 
 	 * @return
 	 */
-	public List<IP> getIPPageLst(Map arg);
+	public Map<String,Object> getIPPageLst(HttpServletRequest request);
+	
+	/**
+	 * get count
+	 * 
+	 * @param arg
+	 * @return
+	 */
+	public int getIPCnt(Map<String,Object> arg);
 }
