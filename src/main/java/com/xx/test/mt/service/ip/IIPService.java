@@ -36,5 +36,5 @@ public interface IIPService {
 	 * @param arg
 	 * @return
 	 */
-	public int getIPCnt(Map<String,Object> arg);
+	public int getIPCnt(HttpServletRequest request);
 }
