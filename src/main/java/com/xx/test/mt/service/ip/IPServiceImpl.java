@@ -52,23 +52,50 @@ public class IPServiceImpl implements IIPService{
 	
 	public Map<String,Object> getIPPageLst(HttpServletRequest request){
 		Map<String,Object> retVal = new HashMap<String,Object>();
-		
-		List<IP> ipLst = new ArrayList<IP>();
 		Map<String,Object> arg = new HashMap<String,Object>();
 		
+		List<IP> ipLst = new ArrayList<IP>();
 		//Map<String,String[]> parameterMap = request.getParameterMap();
 		String sEcho = request.getParameter("sEcho");
-		String iDisplayStart = request.getParameter("iDisplayStart");
-		String iDisplayLength = request.getParameter("iDisplayLength");
+		String start = request.getParameter("iDisplayStart");
+		String offset = request.getParameter("iDisplayLength");
+		
+		int iDisplayStart = (start==null)?0:Integer.valueOf(start);
+		int iDisplayLength = (offset==null)?10:Integer.valueOf(offset);
+		
 		String iSortCol_0 = request.getParameter("iSortCol_0");
 		String sSortDir_0 = request.getParameter("sSortDir_0");
+		
+		arg.put("start", iDisplayStart);
+		arg.put("offset", iDisplayLength);
+		
+		System.out.println("-->arg:"+arg);
 		
 		int cnt = ipMapper.getIPCnt(arg);//call dao get count
 		ipLst = ipMapper.getIPPageLst(arg);//call dao get data list
 		
 		retVal.put("sEcho",sEcho);
-		retVal.put("iTotalRecords",0);
+		retVal.put("iTotalRecords",cnt);
+		retVal.put("iTotalDisplayRecords",cnt);
+		retVal.put("aaData",ipLst);
 		
+		System.out.println("class IPServiceImpl,method getIPPageLst retVal:"+retVal);
 		return retVal;
+	}
+
+	@Override
+	public int getIPCnt(HttpServletRequest request) {
+		Map<String,Object> arg = new HashMap<String,Object>();
+		String start = request.getParameter("iDisplayStart");
+		String offset = request.getParameter("iDisplayLength");
+		
+		int iDisplayStart = (start==null)?0:Integer.valueOf(start);
+		int iDisplayLength = (offset==null)?10:Integer.valueOf(offset);
+		
+		arg.put("start", iDisplayStart);
+		arg.put("offset", iDisplayLength);
+		
+		ipMapper.getIPCnt(arg);
+		return 0;
 	}
 }

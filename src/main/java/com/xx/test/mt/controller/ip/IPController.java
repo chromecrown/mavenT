@@ -1,6 +1,5 @@
 package com.xx.test.mt.controller.ip;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +55,20 @@ public class IPController {
 	}
 	
 	/**
+	 * get count
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/cnt",method=RequestMethod.POST)
+	@ResponseBody
+	public int getCnt(HttpServletRequest request){
+		int retVal = ipService.getIPCnt(request);
+		System.out.println("getIPPageCnt:"+retVal);
+		return retVal;
+	}
+	
+	/**
 	 * 分页查询数据
 	 * 
 	 * @return
@@ -64,7 +77,7 @@ public class IPController {
 	@ResponseBody
 	public Map<String,Object> getIPPageLst(HttpServletRequest request){
 		Map<String,Object> retVal = ipService.getIPPageLst(request);
-		System.out.println("getIPPageLst:"+retVal);
+		System.out.println("class IPController,method getIPPageLst:"+retVal);
 		return retVal;
 	}
 }
