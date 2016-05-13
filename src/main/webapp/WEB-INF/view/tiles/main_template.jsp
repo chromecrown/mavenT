@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <base href="<%=basePath%>">
   
-<script  src="resource/js/jquery-2.1.1.js"></script>
-<script  src="resource/js/zTree/jquery.ztree.core.js"></script>
+<script src="resource/js/jquery-2.1.1.js"></script>
+<script src="resource/js/zTree/jquery.ztree.core.js"></script>
 <script src="resource/js/zTree/jquery.ztree.excheck.js"></script>
 <script src="resource/js/zTree/jquery.ztree.exedit.js"></script>
 <script src="resource/js/sco/sco.message.js"></script>
