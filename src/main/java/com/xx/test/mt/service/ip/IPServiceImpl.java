@@ -1,8 +1,11 @@
 package com.xx.test.mt.service.ip;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,9 +50,25 @@ public class IPServiceImpl implements IIPService{
 		return ipLst;
 	}
 	
-	public List<IP> getIPPageLst(Map arg){
+	public Map<String,Object> getIPPageLst(HttpServletRequest request){
+		Map<String,Object> retVal = new HashMap<String,Object>();
+		
 		List<IP> ipLst = new ArrayList<IP>();
-		ipLst = ipMapper.getIPPageLst(arg);
-		return ipLst;
+		Map<String,Object> arg = new HashMap<String,Object>();
+		
+		//Map<String,String[]> parameterMap = request.getParameterMap();
+		String sEcho = request.getParameter("sEcho");
+		String iDisplayStart = request.getParameter("iDisplayStart");
+		String iDisplayLength = request.getParameter("iDisplayLength");
+		String iSortCol_0 = request.getParameter("iSortCol_0");
+		String sSortDir_0 = request.getParameter("sSortDir_0");
+		
+		int cnt = ipMapper.getIPCnt(arg);//call dao get count
+		ipLst = ipMapper.getIPPageLst(arg);//call dao get data list
+		
+		retVal.put("sEcho",sEcho);
+		retVal.put("iTotalRecords",0);
+		
+		return retVal;
 	}
 }
