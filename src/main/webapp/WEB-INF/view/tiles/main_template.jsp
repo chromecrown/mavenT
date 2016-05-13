@@ -19,14 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="resource/js/sco/sco.message.js"></script>
 <script src="resource/js/sco/sco.modal.js"></script>
 <script src="resource/js/sco/sco.confirm.js"></script>
-<script src="resource/js/dataTable/jquery.dataTables.js"></script>
+<script src="resource/js/dataTable/jquery.dataTables.min.js"></script>
 
 
 <link rel="stylesheet" href="resource/css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">
 <link rel="stylesheet" href="resource/css/zTree/metroStyle/metroStyle.css" type="text/css">
 <link rel="stylesheet" href="resource/css/sco/scojs.css" type="text/css">
 <link rel="stylesheet" href="resource/css/sco/sco.message.css" type="text/css">
-<link rel="stylesheet" href="resource/css/dataTable/jquery.dataTables.css" type="text/css">
+<link rel="stylesheet" href="resource/css/dataTable/jquery.dataTables.min.css" type="text/css">
 
 <title>Main</title>  
 <style type="text/css">  

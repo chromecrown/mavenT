@@ -5,18 +5,21 @@
 </div>
 <script>
      //load menu data
-     function loadData(){
+     function loadCnt(){
      	var argObj = {};
      	$.ajax({
  			type:"POST",
- 			url:"ip/pageLst",
+ 			url:"ip/cnt",
  			data:argObj,
  			dataType:"text",
  	  		beforeSend:function(XMLHttpRequest){
  	      	},
  		   	success:function(data,status){
- 	      		$.scojs_message("information load success", $.scojs_message.TYPE_OK);
+ 	      		$.scojs_message("get cnt success", $.scojs_message.TYPE_OK);
  		   		console.log("return type of data-=>"+data);
+ 		   		if(data > 0){
+	 		   	    initTblIP();
+ 		   		}
  		   	},
  	      	complete:function(XMLHttpRequest,status){
  	      	},
@@ -27,7 +30,7 @@
      }
      //loadData();
      $(document).ready(function(){
-	     initTblIP();
+    	 loadCnt();
      });
      
    //初始化IP数据显示表格
