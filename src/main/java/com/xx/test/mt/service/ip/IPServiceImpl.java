@@ -95,7 +95,7 @@ public class IPServiceImpl implements IIPService{
 		arg.put("start", iDisplayStart);
 		arg.put("offset", iDisplayLength);
 		
-		ipMapper.getIPCnt(arg);
-		return 0;
+		int cnt = ipMapper.getIPCnt(arg);
+		return cnt;
 	}
 }
