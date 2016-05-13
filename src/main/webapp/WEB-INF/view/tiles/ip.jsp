@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%>
 <div>
     <table id="tblIP" class="table table-striped table-bordered table-hover"></table>
 </div>
@@ -23,11 +25,16 @@
  	      	}
        });
      }
-     loadData();
+     //loadData();
+     $(document).ready(function(){
+	     initTblIP();
+     });
      
    //初始化IP数据显示表格
- 	function init_tbl_IPInfo(tblID,url,obj){
- 		$("#"+tblID).dataTable({
+ 	function initTblIP(tblID,url,obj){
+	   var url = "ip/pageLst";
+	   var obj = new Object();
+ 		$("#tblIP").dataTable({
  		    "bFilter": false,
  		    "bAutoWidth": true, 
  		 	"bDeferRender":true, 
@@ -51,7 +58,7 @@
         	},
         "aoColumns" :[ 
           	{"mDataProp" : "id","sTitle":"序列"},
-          	{"mDataProp" : "ip","sTitle":"邮箱"},
+          	{"mDataProp" : "ip","sTitle":"IP"},
           	{"mDataProp" : "day","sTitle":"获取日期"},
           	{"mDataProp" : "inOut","sTitle":"内外网"},
           	{"mDataProp" : "src","sTitle":"来源"},
