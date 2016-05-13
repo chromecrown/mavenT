@@ -32,13 +32,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">  
     body{  
         background-color: #FFFACD;  
-    }  
+    }
+    .top{
+        float:left;
+    }
+    .nav{
+        float:left;
+    }
 </style>  
 </head>  
-<body>  
-    <t:insertAttribute name="top"/>
-    <t:insertAttribute name="menu"/>
-    <t:insertAttribute name="content"/>  
+<body>
+    <div class="top">
+	    <t:insertAttribute name="top"/>
+    </div>
+    <div class="nav">
+        <t:insertAttribute name="menu"/>
+    </div>
+    <div class="nav">
+        <t:insertAttribute name="content"/>  
+    </div>
 </body>
 <script>
 	var objLang = new Object();

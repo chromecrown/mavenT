@@ -1,4 +1,3 @@
-<h1>zTreeMetroStyle</h1>
 <div class="content_wrap">
     <div class="zTreeDemoBackground left">
         <ul id="treeMenu" class="ztree"></ul>
