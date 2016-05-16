@@ -29,7 +29,7 @@
 	<!-- 静态资源处理， css， js， imgs -->
 	<mvc:resources mapping="resource/**" location="/WEB-INF/resource/" />
 	
-	<!-- interceptors configuration -->
+	<!-- 拦截器配置 -->
 	<mvc:interceptors>  
         <mvc:interceptor>  
             <mvc:mapping path="/*"/>  
