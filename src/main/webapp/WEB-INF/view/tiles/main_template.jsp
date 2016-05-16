@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="resource/js/sco/sco.modal.js"></script>
 <script src="resource/js/sco/sco.confirm.js"></script>
 <script src="resource/js/dataTable/jquery.dataTables.min.js"></script>
+<script src="resource/js/moment/moment.min.js"></script>
 
 
 <link rel="stylesheet" href="resource/css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">

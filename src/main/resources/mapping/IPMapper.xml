@@ -11,7 +11,7 @@
     <result column="grp" property="grp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, day, ip, in_out, src, insert_time, grp
+    id, day, ip, in_out, src,insert_time as insert_time, grp
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
