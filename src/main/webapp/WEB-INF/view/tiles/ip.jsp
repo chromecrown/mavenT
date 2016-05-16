@@ -67,8 +67,15 @@
           	{"mDataProp" : "insertTime","sTitle":"插入时间"}
          ],
          "fnCreatedRow":function(nRow,aData,iDisplayIndex){
-         	    //$("td:eq(7)",nRow).html(row7);
- 				return nRow;
+                var day = aData["day"];
+                var dayHtml = moment(day).format("YYYY-MM-DD");
+         	    $("td:eq(2)",nRow).html(dayHtml);
+         	    
+                var insertTime = aData["insertTime"];
+                var insertTimeHtml = moment(insertTime).format("YYYY-MM-DD HH:mm:ss");
+         	    $("td:eq(5)",nRow).html(insertTimeHtml);
+         	    
+ 			    return nRow;
  		 	},
  		 	//在每一个表格draw事件发生前调用该函数
  		 	"fnPreDrawCallback":function(){
