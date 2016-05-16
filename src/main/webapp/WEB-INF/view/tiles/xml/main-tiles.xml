@@ -26,4 +26,7 @@
     <definition name="ip" extends="template">  
         <put-attribute name="content" value="/WEB-INF/view/tiles/ip.jsp"/>  
     </definition>  
+    <definition name="manage" extends="template">  
+        <put-attribute name="content" value="/WEB-INF/view/tiles/manage.jsp"/>  
+    </definition>  
 </tiles-definitions> 

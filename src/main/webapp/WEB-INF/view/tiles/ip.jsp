@@ -15,8 +15,7 @@
  	  		beforeSend:function(XMLHttpRequest){
  	      	},
  		   	success:function(data,status){
- 	      		$.scojs_message("get cnt success", $.scojs_message.TYPE_OK);
- 		   		console.log("return type of data-=>"+data);
+ 	      		//$.scojs_message("get cnt success", $.scojs_message.TYPE_OK);
  		   		if(data > 0){
 	 		   	    initTblIP();
  		   		}
@@ -24,7 +23,7 @@
  	      	complete:function(XMLHttpRequest,status){
  	      	},
  	      	error:function(){
- 	      		$.scojs_message("information msg", $.scojs_message.TYPE_ERROR);
+ 	      		$.scojs_message("error msg", $.scojs_message.TYPE_ERROR);
  	      	}
        });
      }

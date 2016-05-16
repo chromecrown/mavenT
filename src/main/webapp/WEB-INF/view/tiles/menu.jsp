@@ -100,18 +100,15 @@
     	  		beforeSend:function(XMLHttpRequest){
     	      	},
     		   	success:function(data,status){
-    	      		$.scojs_message("information load success", $.scojs_message.TYPE_OK);
-    		   		console.log("return data=>"+JSON.stringify(data));
-    		   		console.log("return type of data=>"+typeof(data));
+    	      		//$.scojs_message("information load success", $.scojs_message.TYPE_OK);
     		   		var jsonData = $.parseJSON(data);
-    		   		console.log("return type of jsonData=>"+typeof(jsonData));
     		   		
     		   		$.fn.zTree.init($("#myTree"), myTreeSetting, jsonData);
     		   	},
     	      	complete:function(XMLHttpRequest,status){
     	      	},
     	      	error:function(){
-    	      		$.scojs_message("information msg", $.scojs_message.TYPE_ERROR);
+    	      		$.scojs_message("load menu data error msg", $.scojs_message.TYPE_ERROR);
     	      	}
           });
         }

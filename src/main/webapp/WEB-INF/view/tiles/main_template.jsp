@@ -27,14 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="resource/css/sco/scojs.css" type="text/css">
 <link rel="stylesheet" href="resource/css/sco/sco.message.css" type="text/css">
 <link rel="stylesheet" href="resource/css/dataTable/jquery.dataTables.min.css" type="text/css">
+<link rel="stylesheet" href="resource/css/mystyle.css" type="text/css">
 
 <title>Main</title>  
 <style type="text/css">  
     body{  
         background-color: #FFFACD;  
-    }
-    .top{
-        float:left;
     }
     .nav{
         float:left;
@@ -42,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>  
 </head>  
 <body>
-    <div class="top">
+    <div class="">
 	    <t:insertAttribute name="top"/>
     </div>
     <div class="nav">
