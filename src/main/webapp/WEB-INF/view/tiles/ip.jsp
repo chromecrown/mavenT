@@ -77,15 +77,15 @@
          	    
  			    return nRow;
  		 	},
- 		 	//在每一个表格draw事件发生前调用该函数
- 		 	"fnPreDrawCallback":function(){
- 		 	},
- 		 	//表格被初始化后调用
- 		 	"initComplete":function(){
- 		 	},
- 		 	//当draw事件发生时调用
- 		 	"fnDrawCallback":function(){
- 		 	},
+	 	//在每一个表格draw事件发生前调用该函数
+	 	"fnPreDrawCallback":function(){
+	 	},
+	 	//表格被初始化后调用
+	 	"initComplete":function(){
+	 	},
+	 	//当draw事件发生时调用
+	 	"fnDrawCallback":function(){
+	 	},
           "oLanguage" : objLang
  		});
  	} //end function initTable
