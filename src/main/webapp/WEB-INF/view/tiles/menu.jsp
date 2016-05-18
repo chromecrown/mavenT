@@ -10,11 +10,6 @@
 </div>
 <script type="text/javascript" charset="utf-8">
         var setting = {
-            view: {
-                addHoverDom: addHoverDom,
-                removeHoverDom: removeHoverDom,
-                selectedMulti: false
-            },
             check: {
                 enable: false
             },
@@ -73,6 +68,7 @@
 
         var newCount = 1;
         function addHoverDom(treeId, treeNode) {
+        	console.log("in method addHoverDom");
             var sObj = $("#" + treeNode.tId + "_span");
             if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length > 0)
            	{
@@ -93,6 +89,7 @@
         };
         
         function removeHoverDom(treeId, treeNode) {
+        	console.log("in method removeHoverDom");
             $("#addBtn_"+treeNode.tId).unbind().remove();
         };
         
