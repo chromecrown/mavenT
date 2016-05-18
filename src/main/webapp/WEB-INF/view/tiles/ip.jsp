@@ -85,9 +85,6 @@
  		 	},
  		 	//当draw事件发生时调用
  		 	"fnDrawCallback":function(){
- 		 		$(".orgClass").each(function(i,v){
- 		 			qryOrgInfo(this);//查询指定编码组织
- 		 		});
  		 	},
           "oLanguage" : objLang
  		});
