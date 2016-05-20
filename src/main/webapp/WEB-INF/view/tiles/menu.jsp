@@ -89,7 +89,6 @@
         };
         
         function removeHoverDom(treeId, treeNode) {
-        	console.log("in method removeHoverDom");
             $("#addBtn_"+treeNode.tId).unbind().remove();
         };
         
