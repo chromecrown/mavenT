@@ -14,4 +14,6 @@ public interface MenuInfoMapper {
     int updateByPrimaryKeySelective(MenuInfo record);
 
     int updateByPrimaryKey(MenuInfo record);
+    
+    int selectCount();
 }

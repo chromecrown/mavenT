@@ -10,15 +10,26 @@
         <ul id="menuManage" class="ztree"></ul>
     </div>
     <div class="menu_e">
-        <form action="">
+        <form id="menuForm">
             <div>
-            	上级节点ID<input type="text" id="parentCode" value=""/>
+            	上级节点ID<input type="text" id="parentcode" name="parentcode"/>
             </div>
             <div>
-            	名称<input type="text" id="menuName" value=""/>
+            	名称<input type="text" id="menuName" name="menuname"/>
             </div>
             <div>
-	            链接<input type="text" id="menuHref" value="／"/>
+	            链接<input type="text" id="menuHref" name="menuhref"/>
+            </div>
+            <div>
+	            级别<input type="text" id="level" name="level"/>
+            </div>
+            <div>
+	            可用<input type="radio" name="isenable" value="1" checked="checked"/>
+	            禁用<input type="radio" name="isenable" value="0"/>
+            </div>
+            <div>
+	            可见<input type="radio" name="isvisual" value="1" checked="checked"/>
+	            隐藏<input type="radio" name="isvisual" value="0"/>
             </div>
         </form>
     </div>
@@ -57,9 +68,6 @@
 		var nodeName = $("#menuName").val();//名称
 		var menuHref = $("#menuHref").val();//链接
 		
-		console.log("manage.jsp addHoverFun,nodeId="+JSON.stringify(treeNode));
-		console.log("manage.jsp addHoverFun,nodeId="+nodeId);
-		
 		var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length > 0)
        	{
@@ -72,7 +80,11 @@
         if(btn) 
         {
         	btn.bind("click", function(){
-        		$("#parentCode").val(nodeId);//parent code
+        		$("#parentcode").val(nodeId);//parent code
+        		var level = treeNode.level;//当前节点级别
+        		var willAddedLevel = level + 1;
+        		var level = $("#level").val(willAddedLevel);//级别
+        		
         		if(nodeName == ""){
         			$.scojs_message("请输入子节点名称", $.scojs_message.TYPE_ERROR);
         			$("#menuName").focus();
@@ -83,15 +95,14 @@
         			$("#menuHref").focus();
         			return false;
         		}
-                var zTree = $.fn.zTree.getZTreeObj("menuManage");
-                zTree.addNodes(treeNode, {id:(100 + newCount), pId:nodeId, name:nodeName + (newCount++)});
+        		addMenu(treeNode);
                 return false;
             });
         }
 	};
 	
 	function removeHover(treeId, treeNode) {
-	    console.log("manage.jsp remove hover dom");
+	    //console.log("manage.jsp remove hover dom");
 	    $("#addBtn_"+treeNode.tId).unbind().remove();
 	};
 	
@@ -107,7 +118,46 @@
 	//数据节点
     var menuNodes =[{ id:0, pId:null, name:"根节点", open:true}];
     $(document).ready(function(){
-   	 $.fn.zTree.init($("#menuManage"), zTreeSetting, menuNodes);
+   	    $.fn.zTree.init($("#menuManage"), zTreeSetting, menuNodes);
     });
-     
+    
+    /**
+        新增菜单节点
+        treeNode:node object
+        parentId:parent node id
+        nodeName:visual text
+        href:link value
+    **/
+    function addMenu(treeNode){
+    	var argObj = {};
+    	argObj = getArgObj("menuForm");
+    	console.log("argObj:"+JSON.stringify(argObj));
+    	$.ajax({
+			type:"POST",
+			url:"manage/addMenu/",
+			data:argObj,
+			dataType:"text",
+	  		beforeSend:function(XMLHttpRequest){
+	      	},
+		   	success:function(data,status){
+	      		//$.scojs_message("information load success", $.scojs_message.TYPE_OK);
+	      		console.log("data:"+data);
+	      		console.log("typeof data:"+typeof(data));
+		   		var jsonData = $.parseJSON(data);
+		   		var nodeId = jsonData.menucode;
+		   		var parentId = jsonData.parentcode;
+		   		var nodeName = jsonData.menuname;
+		   		
+		   		var zTree = $.fn.zTree.getZTreeObj("menuManage");//获取zTree对象
+                zTree.addNodes(treeNode, {id:nodeId, pId:parentId, name:nodeName});
+	      		$.scojs_message("add menu success", $.scojs_message.TYPE_OK);
+		   		
+		   	},
+	      	complete:function(XMLHttpRequest,status){
+	      	},
+	      	error:function(){
+	      		$.scojs_message("add menu error", $.scojs_message.TYPE_ERROR);
+	      	}
+      });
+    }
 </script>
