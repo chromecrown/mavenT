@@ -10,6 +10,8 @@ public class MenuInfo {
     private String menuname;
 
     private String parentcode;
+    
+    private Integer level;
 
     private String icon;
 
@@ -30,6 +32,14 @@ public class MenuInfo {
     private String operator;
 
     private String description;
+    
+    public Integer getLevel(){
+    	return level;
+    }
+    
+    public void setLevel(Integer level){
+    	this.level = level;
+    }
 
     public Integer getId() {
         return id;
@@ -149,5 +159,9 @@ public class MenuInfo {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+    
+    public String toString(){
+    	return "id:"+id+" parentcode:" + parentcode+" menuname:"+menuname+" menuhref:"+menuhref;
     }
 }

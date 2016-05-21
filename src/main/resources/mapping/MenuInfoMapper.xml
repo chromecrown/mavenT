@@ -7,6 +7,7 @@
     <result column="menuCode" property="menucode" jdbcType="INTEGER" />
     <result column="menuName" property="menuname" jdbcType="VARCHAR" />
     <result column="parentCode" property="parentcode" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
     <result column="icon" property="icon" jdbcType="VARCHAR" />
     <result column="cssClass" property="cssclass" jdbcType="VARCHAR" />
     <result column="menuHref" property="menuhref" jdbcType="VARCHAR" />
@@ -19,7 +20,7 @@
     <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, menuID, menuCode, menuName, parentCode, icon, cssClass, menuHref, target, weight, 
+    id, menuID, menuCode, menuName, parentCode, level, icon, cssClass, menuHref, target, weight, 
     isEnable, isVisual, isDeleted, operator, description
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -33,17 +34,18 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.xx.test.mt.model.MenuInfo" >
-    insert into t_menu (id, menuID, menuCode, 
-      menuName, parentCode, icon, 
+    insert into t_menu (id, menuID, menuCode,
+      menuName, parentCode, level, icon, 
       cssClass, menuHref, target, 
       weight, isEnable, isVisual, 
       isDeleted, operator, description
       )
     values (#{id,jdbcType=INTEGER}, #{menuid,jdbcType=VARCHAR}, #{menucode,jdbcType=INTEGER}, 
-      #{menuname,jdbcType=VARCHAR}, #{parentcode,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
-      #{cssclass,jdbcType=VARCHAR}, #{menuhref,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR}, 
-      #{weight,jdbcType=INTEGER}, #{isenable,jdbcType=VARCHAR}, #{isvisual,jdbcType=VARCHAR}, 
-      #{isdeleted,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      #{menuname,jdbcType=VARCHAR}, #{parentcode,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{icon,jdbcType=VARCHAR}, #{cssclass,jdbcType=VARCHAR}, #{menuhref,jdbcType=VARCHAR}, 
+      #{target,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}, #{isenable,jdbcType=VARCHAR}, 
+      #{isvisual,jdbcType=VARCHAR}, #{isdeleted,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xx.test.mt.model.MenuInfo" >
@@ -64,6 +66,9 @@
       <if test="parentcode != null" >
         parentCode,
       </if>
+      <if test="level != null" >
+        level
+      </if> 
       <if test="icon != null" >
         icon,
       </if>
@@ -110,6 +115,9 @@
       </if>
       <if test="parentcode != null" >
         #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
       </if>
       <if test="icon != null" >
         #{icon,jdbcType=VARCHAR},
