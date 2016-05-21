@@ -1,7 +1,8 @@
 package com.xx.test.mt.service.manage;
 
+import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
-
 import com.xx.test.mt.model.MenuInfo;
 
 @Service("manageService")
@@ -21,5 +22,12 @@ public interface IManageService {
 	 * @param menuInfo
 	 * @return  新增的菜单实例对象
 	 */
-	public MenuInfo addNewMenu(MenuInfo menuInfo);
+	public Map<String, Object> addNewMenu(MenuInfo menuInfo);
+	
+	/**
+	 * 获取所有的菜单列表
+	 * 
+	 * @return
+	 */
+	public List<Map<String, Object>> getMenuLst();
 }

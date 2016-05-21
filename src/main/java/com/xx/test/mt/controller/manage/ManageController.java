@@ -1,10 +1,14 @@
 package com.xx.test.mt.controller.manage;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -34,13 +38,31 @@ public class ManageController {
 		return "manage";
 	}
 	
+	/**
+	 * 初始化菜单列表
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value={"getMenuLst"},method=RequestMethod.POST)
+	@ResponseBody
+	public List<Map<String, Object>> getMenuLst(){
+		List<Map<String, Object>> menuLst = service.getMenuLst();
+		return menuLst;
+	}
+	
+	/**
+	 * add new menu
+	 * 
+	 * @param menuInfo
+	 * @return
+	 */
 	@RequestMapping(value={"/addMenu"})
 	@ResponseBody
-	public MenuInfo addMenu(@ModelAttribute("menuInfo") MenuInfo menuInfo){
+	public Map<String, Object> addMenu(@ModelAttribute("menuInfo") MenuInfo menuInfo){
+		Map<String, Object> retMap = new HashMap<String,Object>();
 		System.out.println("enter in method addMenu,menu:"+menuInfo);
-		menuInfo = service.addNewMenu(menuInfo);
-		String menuStr = JSON.toJSONString(menuInfo);
-		System.out.println("menuInfo==>"+menuStr);
-		return menuInfo;
+		retMap = service.addNewMenu(menuInfo);
+		System.out.println("retMap==>"+JSON.toJSONString(retMap));
+		return retMap;
 	}
 }

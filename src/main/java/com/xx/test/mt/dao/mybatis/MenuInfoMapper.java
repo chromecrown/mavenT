@@ -1,5 +1,6 @@
 package com.xx.test.mt.dao.mybatis;
 
+import java.util.List;
 import com.xx.test.mt.model.MenuInfo;
 
 public interface MenuInfoMapper {
@@ -13,7 +14,16 @@ public interface MenuInfoMapper {
 
     int updateByPrimaryKeySelective(MenuInfo record);
 
-    int updateByPrimaryKey(MenuInfo record);
+    int updateByPrimaryKey(MenuInfo menuInfo);
     
     int selectCount();
+    
+    int selectByMenuHref(MenuInfo menuInfo);
+    
+    /**
+     * 所有菜单列表
+     * 
+     * @return
+     */
+    List<MenuInfo> selectMenuLst();
 }

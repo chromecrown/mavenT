@@ -115,10 +115,37 @@
 		}
 	}
 
-	//数据节点
-    var menuNodes =[{ id:0, pId:null, name:"根节点", open:true}];
+	/*
+	    初始化菜单树
+	*/
+	function loadMenuLst(){
+		var argObj = new Object();
+		$.ajax({
+			type:"POST",
+			url:"manage/getMenuLst/",
+			data:argObj,
+			dataType:"text",
+	  		beforeSend:function(XMLHttpRequest){
+	      	},
+		   	success:function(data,status){
+		   	    //数据节点
+		   	    var menuNodes =[{ id:0, pId:null, name:"根节点", open:true}];
+		   		$.scojs_message("load menu list success", $.scojs_message.TYPE_OK);
+		   		console.log("data:"+JSON.stringify(data));
+		   		console.log("type of data:"+typeof(data));
+		   		var menuLst = $.parseJSON(data);
+		   		$.merge(menuNodes,menuLst);
+		   	    $.fn.zTree.init($("#menuManage"), zTreeSetting, menuNodes);
+		   	},
+	      	complete:function(XMLHttpRequest,status){
+	      	},
+	      	error:function(){
+	      		$.scojs_message("load menu list error", $.scojs_message.TYPE_ERROR);
+	      	}
+      });
+	}
     $(document).ready(function(){
-   	    $.fn.zTree.init($("#menuManage"), zTreeSetting, menuNodes);
+    	loadMenuLst();
     });
     
     /**
@@ -140,17 +167,23 @@
 	  		beforeSend:function(XMLHttpRequest){
 	      	},
 		   	success:function(data,status){
-	      		//$.scojs_message("information load success", $.scojs_message.TYPE_OK);
 	      		console.log("data:"+data);
 	      		console.log("typeof data:"+typeof(data));
 		   		var jsonData = $.parseJSON(data);
-		   		var nodeId = jsonData.menucode;
-		   		var parentId = jsonData.parentcode;
-		   		var nodeName = jsonData.menuname;
-		   		
-		   		var zTree = $.fn.zTree.getZTreeObj("menuManage");//获取zTree对象
-                zTree.addNodes(treeNode, {id:nodeId, pId:parentId, name:nodeName});
-	      		$.scojs_message("add menu success", $.scojs_message.TYPE_OK);
+		   		var code = jsonData.code;
+		   		if(jsonData.code == 0){
+			   		var nodeId = jsonData.obj.menucode;
+			   		var parentId = jsonData.obj.parentcode;
+			   		var nodeName = jsonData.obj.menuname;
+			   		
+			   		var zTree = $.fn.zTree.getZTreeObj("menuManage");//获取zTree对象
+	                zTree.addNodes(treeNode, {id:nodeId, pId:parentId, name:nodeName});
+		      		$.scojs_message("成功添加", $.scojs_message.TYPE_OK);
+		   		}else if(code == 1){
+		      		$.scojs_message("已经存在相同的记录", $.scojs_message.TYPE_ERROR);
+		   		}else if(code == -1){
+		      		$.scojs_message("操作没有成功", $.scojs_message.TYPE_ERROR);
+		   		}
 		   		
 		   	},
 	      	complete:function(XMLHttpRequest,status){
