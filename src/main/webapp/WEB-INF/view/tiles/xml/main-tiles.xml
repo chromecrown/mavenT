@@ -28,5 +28,8 @@
     </definition>  
     <definition name="manage" extends="template">  
         <put-attribute name="content" value="/WEB-INF/view/tiles/manage.jsp"/>  
-    </definition>  
+    </definition>
+    <definition name="websocket" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/tiles/websocket.jsp"/>
+    </definition>
 </tiles-definitions> 
