@@ -15,10 +15,10 @@
             	上级节点ID<input type="text" id="parentcode" name="parentcode"/>
             </div>
             <div>
-            	名称<input type="text" id="menuName" name="menuname"/>
+            	名称<input type="text" id="menuname" name="menuname"/>
             </div>
             <div>
-	            链接<input type="text" id="menuHref" name="menuhref"/>
+	            链接<input type="text" id="menuhref" name="menuhref"/>
             </div>
             <div>
 	            级别<input type="text" id="level" name="level"/>
@@ -50,14 +50,16 @@
             }
         },
         edit: {
-            enable: true
+            enable: true,
+            showRenameBtn: false
         },
         async:{
         	enable:true,
         	url:"",
         },
         callback:{
-        	beforeRemove: beforeRemoveFunc
+        	beforeRemove: beforeRemoveFunc,
+        	onClick: nodeClick
         }
     };
     
@@ -65,8 +67,8 @@
     
 	function addHover(treeId, treeNode) {
 		var nodeId = treeNode.id;//当前节点id
-		var nodeName = $("#menuName").val();//名称
-		var menuHref = $("#menuHref").val();//链接
+		var nodeName = $("#menuname").val();//名称
+		var menuHref = $("#menuhref").val();//链接
 		
 		var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length > 0)
@@ -87,12 +89,12 @@
         		
         		if(nodeName == ""){
         			$.scojs_message("请输入子节点名称", $.scojs_message.TYPE_ERROR);
-        			$("#menuName").focus();
+        			$("#menuname").focus();
         			return false;
         		}
         		if(menuHref == ""){
         			$.scojs_message("请输入链接值", $.scojs_message.TYPE_ERROR);
-        			$("#menuHref").focus();
+        			$("#menuhref").focus();
         			return false;
         		}
         		addMenu(treeNode);
@@ -113,6 +115,17 @@
 			console.log("root node can not permit delete");
 			return false;
 		}
+	}
+	
+	//单击节点
+	function nodeClick(event, treeId, treeNode){
+		 //console.log("==>"+JSON.stringify(treeNode));
+		 var nodeName = treeNode.name;
+		 var href = treeNode.href;
+		 var level = treeNode.level;
+		 $("#menuname").val(nodeName);
+		 $("#menuhref").val(href);
+		 $("#level").val(level);
 	}
 
 	/*
