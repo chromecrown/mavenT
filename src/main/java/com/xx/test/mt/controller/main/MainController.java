@@ -1,4 +1,4 @@
-package com.xx.test.mt.controller.tiles;
+package com.xx.test.mt.controller.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/")
-public class TilesController {
+public class MainController {
 	
 	/**
 	 * show tile main page

@@ -11,4 +11,5 @@
     <li><a href="">Python</a></li>
     <li><a href="">Apache</a></li>
     <li><a href="about">关于</a></li>
+    <li><a href="logout">退出</a></li>
 </ul>

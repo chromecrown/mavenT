@@ -78,15 +78,6 @@
 			</list>
 		</property>
 	</bean>
-	<!--     
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-    -->
     <!-- -->
     <bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"/>
     <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" lazy-init="false">
@@ -96,7 +87,15 @@
             </list>
         </property>
     </bean>
-     
+     <!--     
+    -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 	<!--文件上传配置,200*1024*1024即200M resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
