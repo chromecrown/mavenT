@@ -143,7 +143,7 @@
 		   	success:function(data,status){
 		   	    //数据节点
 		   	    var menuNodes =[{ id:0, pId:null, name:"根节点", open:true}];
-		   		$.scojs_message("load menu list success", $.scojs_message.TYPE_OK);
+		   		//$.scojs_message("load menu list success", $.scojs_message.TYPE_OK);
 		   		console.log("data:"+JSON.stringify(data));
 		   		console.log("type of data:"+typeof(data));
 		   		var menuLst = $.parseJSON(data);
