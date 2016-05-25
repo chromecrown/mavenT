@@ -62,7 +62,7 @@ public class ManageServiceImpl implements IManageService{
 			map.put("id", obj.getMenucode());
 			map.put("pId", obj.getParentcode());
 			map.put("name", obj.getMenuname());
-			map.put("href", obj.getMenuhref());
+			map.put("url", obj.getMenuhref());
 			lst.add(map);
 		}
 		return lst;

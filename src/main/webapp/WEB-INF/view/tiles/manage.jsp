@@ -31,6 +31,9 @@
 	            可见<input type="radio" name="isvisual" value="1" checked="checked"/>
 	            隐藏<input type="radio" name="isvisual" value="0"/>
             </div>
+            <div>
+	            ID<input type="text" id="id" name="id" disabled="disabled" />
+            </div>
         </form>
     </div>
 </div>    
@@ -51,7 +54,7 @@
         },
         edit: {
             enable: true,
-            showRenameBtn: false
+            showRenameBtn: true
         },
         async:{
         	enable:true,
@@ -67,9 +70,7 @@
     
 	function addHover(treeId, treeNode) {
 		var nodeId = treeNode.id;//当前节点id
-		var nodeName = $("#menuname").val();//名称
-		var menuHref = $("#menuhref").val();//链接
-		
+
 		var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length > 0)
        	{
@@ -83,9 +84,13 @@
         {
         	btn.bind("click", function(){
         		$("#parentcode").val(nodeId);//parent code
+        		var nodeName = $("#menuname").val();//名称
+        		var menuHref = $("#menuhref").val();//链接
+        		
         		var level = treeNode.level;//当前节点级别
         		var willAddedLevel = level + 1;
         		var level = $("#level").val(willAddedLevel);//级别
+        		
         		
         		if(nodeName == ""){
         			$.scojs_message("请输入子节点名称", $.scojs_message.TYPE_ERROR);
@@ -121,11 +126,13 @@
 	function nodeClick(event, treeId, treeNode){
 		 //console.log("==>"+JSON.stringify(treeNode));
 		 var nodeName = treeNode.name;
-		 var href = treeNode.href;
+		 var href = treeNode.url;
 		 var level = treeNode.level;
+		 var id = treeNode.id;
 		 $("#menuname").val(nodeName);
 		 $("#menuhref").val(href);
 		 $("#level").val(level);
+		 $("#id").val(id);
 	}
 
 	/*

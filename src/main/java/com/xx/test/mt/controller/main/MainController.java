@@ -1,20 +1,28 @@
 package com.xx.test.mt.controller.main;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.xx.test.mt.service.manage.IManageService;
+
 @Controller
 @RequestMapping("/")
 public class MainController {
 	
+	private IManageService manageService;
+	@Autowired
+	public void setManageService(IManageService manageService) {
+		this.manageService = manageService;
+	}
+
 	/**
 	 * show tile main page
 	 * 
@@ -41,51 +49,21 @@ public class MainController {
 	
 	@RequestMapping(value="/menu",method=RequestMethod.POST)
 	public String loadMenu(){
+		
 		return "menu";
 	}
 	
+	/**
+	 * load menu data list from database
+	 * 
+	 * @return json of list map
+	 */
 	@RequestMapping(value="/loadMenuData",method=RequestMethod.POST)
 	@ResponseBody
-	public List<Object> getMenuData(){
+	public List<Map<String,Object>> getMenuData(){
 		System.out.println("enter in method getMenuData");
-		List<Object> lstMenu = new ArrayList<Object>();
-		
-		Map<String,Object> a = new HashMap<String,Object>();
-		a.put("id",1);
-		a.put("pId",0);
-		a.put("name","root");
-		a.put("open",true);
-		a.put("isParent",true);
-		lstMenu.add(a);
-		
-		Map<String,Object> b = new HashMap<String,Object>();
-		b.put("id",11);
-		b.put("pId",1);
-		b.put("name","Leaf1");
-		b.put("open",true);
-		b.put("isParent",false);
-		lstMenu.add(b);
-		
-		Map<String,Object> c = new HashMap<String,Object>();
-		c.put("id",2);
-		c.put("pId",0);
-		c.put("name","乐视");
-		c.put("open",true);
-		c.put("isParent",true);
-		c.put("url","http://www.le.com");
-		c.put("target","_blank");
-		lstMenu.add(c);
-		
-		Map<String,Object> d = new HashMap<String,Object>();
-		d.put("id",3);
-		d.put("pId",0);
-		d.put("name","腾讯");
-		d.put("open",true);
-		d.put("isParent",true);
-		d.put("url","http://www.qq.com");
-		d.put("target","_blank");
-		lstMenu.add(d);
-		
+		List<Map<String,Object>> lstMenu = new ArrayList<Map<String,Object>>();
+		lstMenu = manageService.getMenuLst();
 		System.out.println("will leave method getMenuData");
 		return lstMenu;
 	}

@@ -6,7 +6,7 @@
   
   <!-- 设置session失效，单位分 -->
 　　<session-config>
-　　    <session-timeout>1</session-timeout>
+　　    <session-timeout>5</session-timeout>
 　　</session-config>
 
   <!-- Spring应用上下文， 理解层次化的ApplicationContext -->

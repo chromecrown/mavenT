@@ -27,6 +27,9 @@
                 simpleData: {
                     enable: true
                 }
+            },
+            edit: {
+                enable: false
             }
         };
 
@@ -63,7 +66,8 @@
         ];
 
         $(document).ready(function(){
-            $.fn.zTree.init($("#treeMenu"), setting, zNodes);
+            //$.fn.zTree.init($("#treeMenu"), setting, zNodes);
+        	loadMenuData();
         });
 
         var newCount = 1;
@@ -105,7 +109,7 @@
     		   	success:function(data,status){
     	      		//$.scojs_message("information load success", $.scojs_message.TYPE_OK);
     		   		var jsonData = $.parseJSON(data);
-    		   		
+    		   		console.log("==>loaded menu data"+data);
     		   		$.fn.zTree.init($("#myTree"), myTreeSetting, jsonData);
     		   	},
     	      	complete:function(XMLHttpRequest,status){
@@ -115,5 +119,4 @@
     	      	}
           });
         }
-        loadMenuData();
 </script>
