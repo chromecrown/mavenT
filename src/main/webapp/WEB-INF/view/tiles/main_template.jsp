@@ -131,6 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var x = $("#"+formID).serializeArray();
 		$.each(x, function(i, field){
 			var name = field.name;
+			console.log("name:" + name);
 			var val = field.value;
 			argObj[name] = val;
 		});

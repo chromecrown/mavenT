@@ -23,7 +23,7 @@
             <div>
 	            打开位置<select name＝"target">
 					  <option value ="_blank">新窗口窗口</option>
-					  <option value ="_self" selected>当前窗口</option>
+					  <option value ="_self" selected="selected">当前窗口</option>
 				</select>
             </div>
             <div>
@@ -138,10 +138,12 @@
 		 var href = treeNode.url;
 		 var level = treeNode.level;
 		 var id = treeNode.id;
+		 var pId = treeNode.pId;
 		 $("#menuname").val(nodeName);
 		 $("#menuhref").val(href);
 		 $("#level").val(level);
 		 $("#menucode").val(id);
+		 $("#parentcode").val(pId);
 	}
 	
 	//编辑按钮点击
