@@ -21,9 +21,9 @@
 	            链接<input type="text" id="menuhref" name="menuhref"/>
             </div>
             <div>
-	            打开位置<select name＝"target">
+	            打开位置<select id="target" name="target">
 					  <option value ="_blank">新窗口窗口</option>
-					  <option value ="_self" selected="selected">当前窗口</option>
+					  <option value ="_self">当前窗口</option>
 				</select>
             </div>
             <div>
@@ -134,16 +134,20 @@
 	
 	//单击节点
 	function nodeClick(event, treeId, treeNode){
+		console.log("after click==>"+JSON.stringify(treeNode));
 		 var nodeName = treeNode.name;
 		 var href = treeNode.url;
 		 var level = treeNode.level;
 		 var id = treeNode.id;
 		 var pId = treeNode.pId;
+		 var target = treeNode.target;
 		 $("#menuname").val(nodeName);
 		 $("#menuhref").val(href);
 		 $("#level").val(level);
 		 $("#menucode").val(id);
 		 $("#parentcode").val(pId);
+		 //$("#target").val(target);
+		 $("select option[value='"+target+"']").attr("selected", "selected"); 
 	}
 	
 	//编辑按钮点击

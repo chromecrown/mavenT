@@ -163,6 +163,6 @@ public class MenuInfo {
     
     public String toString(){
     	return "id:"+id+" parentcode:" + parentcode+" menuname:"+menuname+" menuhref:"+menuhref
-    			+ " menucode:"+menucode;
+    			+ " menucode:"+menucode+" target:" + target;
     }
 }

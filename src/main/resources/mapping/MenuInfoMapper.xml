@@ -36,7 +36,7 @@
     and menuName = #{menuname,jdbcType=VARCHAR}
   </select>
   <select id="selectMenuLst" resultMap="BaseResultMap" >
-    select menuCode,menuName,menuHref,parentCode
+    select menuCode,menuName,menuHref,parentCode,target
     from t_menu
     where 1=1
     and isEnable=1
