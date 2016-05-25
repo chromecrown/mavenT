@@ -6,13 +6,15 @@ import com.xx.test.mt.model.MenuInfo;
 public interface MenuInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(MenuInfo record);
+    int insert(MenuInfo menuInfo);
 
-    int insertSelective(MenuInfo record);
+    int insertSelective(MenuInfo menuInfo);
 
     MenuInfo selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(MenuInfo record);
+    int updateByPrimaryKeySelective(MenuInfo menuInfo);
+    
+    int updateByMenuCodeSelective(MenuInfo menuInfo);
 
     int updateByPrimaryKey(MenuInfo menuInfo);
     

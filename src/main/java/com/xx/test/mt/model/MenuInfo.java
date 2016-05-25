@@ -162,6 +162,7 @@ public class MenuInfo {
     }
     
     public String toString(){
-    	return "id:"+id+" parentcode:" + parentcode+" menuname:"+menuname+" menuhref:"+menuhref;
+    	return "id:"+id+" parentcode:" + parentcode+" menuname:"+menuname+" menuhref:"+menuhref
+    			+ " menucode:"+menucode;
     }
 }

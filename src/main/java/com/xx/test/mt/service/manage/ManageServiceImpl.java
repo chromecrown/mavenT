@@ -63,9 +63,17 @@ public class ManageServiceImpl implements IManageService{
 			map.put("pId", obj.getParentcode());
 			map.put("name", obj.getMenuname());
 			map.put("url", obj.getMenuhref());
+			map.put("target", "_self");
+			map.put("level", obj.getLevel());
 			lst.add(map);
 		}
 		return lst;
+	}
+
+	@Override
+	public int updateMenuInfo(MenuInfo menuInfo) {
+		int effectedNum = menuInfoMapper.updateByMenuCodeSelective(menuInfo);
+		return effectedNum;
 	}
 	
 	

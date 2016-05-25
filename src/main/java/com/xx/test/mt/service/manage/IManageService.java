@@ -30,4 +30,11 @@ public interface IManageService {
 	 * @return
 	 */
 	public List<Map<String, Object>> getMenuLst();
+	
+	/**
+	 * 更新菜单信息
+	 * 
+	 * @return
+	 */
+	public int updateMenuInfo(MenuInfo menuInfo);
 }

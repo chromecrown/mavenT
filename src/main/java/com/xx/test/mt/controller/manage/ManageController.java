@@ -65,4 +65,24 @@ public class ManageController {
 		System.out.println("retMap==>"+JSON.toJSONString(retMap));
 		return retMap;
 	}
+	
+	/**
+	 * edit menu
+	 * 
+	 * @param menuInfo
+	 * @return
+	 */
+	@RequestMapping(value={"/editMenu"})
+	@ResponseBody
+	public Map<String,Object> editMenu(@ModelAttribute("menuInfo") MenuInfo menuInfo){
+		Map<String, Object> retMap = new HashMap<String,Object>();
+		System.out.println("enter in method editMenu,menu:"+menuInfo);
+		int effectedNum = service.updateMenuInfo(menuInfo);
+		if(effectedNum == 1){
+			retMap.put("code", 0);
+		}else{
+			retMap.put("code", -1);
+		}
+		return retMap;
+	}
 }

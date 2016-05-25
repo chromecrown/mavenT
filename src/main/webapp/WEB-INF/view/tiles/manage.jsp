@@ -21,6 +21,12 @@
 	            链接<input type="text" id="menuhref" name="menuhref"/>
             </div>
             <div>
+	            打开位置<select name＝"target">
+					  <option value ="_blank">新窗口窗口</option>
+					  <option value ="_self" selected>当前窗口</option>
+				</select>
+            </div>
+            <div>
 	            级别<input type="text" id="level" name="level"/>
             </div>
             <div>
@@ -32,7 +38,11 @@
 	            隐藏<input type="radio" name="isvisual" value="0"/>
             </div>
             <div>
-	            ID<input type="text" id="id" name="id" disabled="disabled" />
+	            ID<input type="text" id="menucode" name="menucode" readonly/>
+            </div>
+            <div>
+	            <input type="button" id="editBtn" value="编辑"/>
+	            <input type="button" id="delBtn" value="删除"/>
             </div>
         </form>
     </div>
@@ -117,14 +127,13 @@
 	function beforeRemoveFunc(treeId, treeNode){
 		var parentNode = treeNode.getParentNode();
 		if(parentNode == null){
-			console.log("root node can not permit delete");
+			$.scojs_message("不能删除根节点", $.scojs_message.TYPE_ERROR);
 			return false;
 		}
 	}
 	
 	//单击节点
 	function nodeClick(event, treeId, treeNode){
-		 //console.log("==>"+JSON.stringify(treeNode));
 		 var nodeName = treeNode.name;
 		 var href = treeNode.url;
 		 var level = treeNode.level;
@@ -132,12 +141,46 @@
 		 $("#menuname").val(nodeName);
 		 $("#menuhref").val(href);
 		 $("#level").val(level);
-		 $("#id").val(id);
+		 $("#menucode").val(id);
 	}
+	
+	//编辑按钮点击
+	$("#editBtn").click(function(){
+		var zTree = $.fn.zTree.getZTreeObj("menuManage");
+		var nodes = zTree.getSelectedNodes();
+		if(nodes.length == 0){
+			$.scojs_message("请选择一个节点", $.scojs_message.TYPE_ERROR);
+			return;
+		}
+		var argObj = getArgObj("menuForm");
+		console.log("argObj==>"+JSON.stringify(argObj));
+		$.ajax({
+			type:"POST",
+			url:"manage/editMenu",
+			data:argObj,
+			dataType:"text",
+	  		beforeSend:function(XMLHttpRequest){
+	      	},
+		   	success:function(data,status){
+		   		var jsonData = $.parseJSON(data);
+		   		var code = jsonData.code;
+		   		if(code == 0){
+		      		$.scojs_message("编辑成功", $.scojs_message.TYPE_OK);
+		      		nodes[0].name = $("#menuname").val();
+		      		nodes[0].url = $("#menuhref").val();
+		      		zTree.updateNode(nodes[0]);
+		   		}else if(code == -1){
+		      		$.scojs_message("操作异常", $.scojs_message.TYPE_ERROR);
+		   		}
+		   		
+		   	},
+	      	error:function(){
+	      		$.scojs_message("edit menu error", $.scojs_message.TYPE_ERROR);
+	      	}
+      });
+	});
 
-	/*
-	    初始化菜单树
-	*/
+	//初始化菜单树
 	function loadMenuLst(){
 		var argObj = new Object();
 		$.ajax({
@@ -149,10 +192,8 @@
 	      	},
 		   	success:function(data,status){
 		   	    //数据节点
-		   	    var menuNodes =[{ id:0, pId:null, name:"根节点", open:true}];
+		   	    var menuNodes =[{ id:0, pId:null, name:"根节点", open:true,level:-1}];
 		   		//$.scojs_message("load menu list success", $.scojs_message.TYPE_OK);
-		   		console.log("data:"+JSON.stringify(data));
-		   		console.log("type of data:"+typeof(data));
 		   		var menuLst = $.parseJSON(data);
 		   		$.merge(menuNodes,menuLst);
 		   	    $.fn.zTree.init($("#menuManage"), zTreeSetting, menuNodes);
@@ -164,6 +205,7 @@
 	      	}
       });
 	}
+	
     $(document).ready(function(){
     	loadMenuLst();
     });

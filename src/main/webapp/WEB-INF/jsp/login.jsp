@@ -8,8 +8,8 @@
 </head>
 <body>
     <form action="dologin">
-        <input type="text" name="username">
-        <input type="password" name="password">
+        <input type="text" name="username" value="admin">
+        <input type="password" name="password" value="passwod000">
         <input type="submit" value="登录">
     </form>
 </body>

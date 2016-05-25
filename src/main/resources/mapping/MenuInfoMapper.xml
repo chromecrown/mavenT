@@ -215,6 +215,51 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateByMenuCodeSelective" parameterType="com.xx.test.mt.model.MenuInfo" >
+    update t_menu
+    <set >
+      <if test="menuid != null" >
+        menuID = #{menuid,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        menuName = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null" >
+        parentCode = #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="cssclass != null" >
+        cssClass = #{cssclass,jdbcType=VARCHAR},
+      </if>
+      <if test="menuhref != null" >
+        menuHref = #{menuhref,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        target = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null" >
+        isEnable = #{isenable,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisual != null" >
+        isVisual = #{isvisual,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        isDeleted = #{isdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menuCode = #{menucode,jdbcType=INTEGER}
+  </update>
   <update id="updateByPrimaryKey" parameterType="com.xx.test.mt.model.MenuInfo" >
     update t_menu
     set menuID = #{menuid,jdbcType=VARCHAR},
