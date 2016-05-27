@@ -41,7 +41,8 @@
 	            ID<input type="text" id="menucode" name="menucode" readonly/>
             </div>
             <div>
-	            <input type="button" id="editBtn" value="编辑"/>
+	            <input type="button" id="addBtn" value="新增"/>
+	            <input type="button" id="editBtn" value="修改"/>
 	            <input type="button" id="delBtn" value="删除"/>
             </div>
         </form>
@@ -64,7 +65,8 @@
         },
         edit: {
             enable: true,
-            showRenameBtn: true
+            showRenameBtn: false,
+            showRemoveBtn: false
         },
         async:{
         	enable:true,
@@ -80,7 +82,6 @@
     
 	function addHover(treeId, treeNode) {
 		var nodeId = treeNode.id;//当前节点id
-
 		var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length > 0)
        	{
@@ -93,25 +94,6 @@
         if(btn) 
         {
         	btn.bind("click", function(){
-        		$("#parentcode").val(nodeId);//parent code
-        		var nodeName = $("#menuname").val();//名称
-        		var menuHref = $("#menuhref").val();//链接
-        		
-        		var level = treeNode.level;//当前节点级别
-        		var willAddedLevel = level + 1;
-        		var level = $("#level").val(willAddedLevel);//级别
-        		
-        		
-        		if(nodeName == ""){
-        			$.scojs_message("请输入子节点名称", $.scojs_message.TYPE_ERROR);
-        			$("#menuname").focus();
-        			return false;
-        		}
-        		if(menuHref == ""){
-        			$.scojs_message("请输入链接值", $.scojs_message.TYPE_ERROR);
-        			$("#menuhref").focus();
-        			return false;
-        		}
         		addMenu(treeNode);
                 return false;
             });
@@ -150,7 +132,22 @@
 		 $("select option[value='"+target+"']").attr("selected", "selected"); 
 	}
 	
-	//编辑按钮点击
+	
+	//添加按钮点击
+	$("#addBtn").click(function(){
+		var zTree = $.fn.zTree.getZTreeObj("menuManage");
+		var nodes = zTree.getSelectedNodes();
+		var treeNode = nodes[0];
+		if (treeNode) {
+			//treeNode = zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, isParent:isParent, name:"new node" + (newCount++)});
+			addMenu(treeNode);
+		} else {
+			$.scojs_message("请选择一个节点", $.scojs_message.TYPE_ERROR);
+		}
+	});
+	
+	
+	//修改按钮点击
 	$("#editBtn").click(function(){
 		var zTree = $.fn.zTree.getZTreeObj("menuManage");
 		var nodes = zTree.getSelectedNodes();
@@ -224,7 +221,26 @@
         href:link value
     **/
     function addMenu(treeNode){
-    	var argObj = {};
+        var nodeId = treeNode.id;
+    	$("#parentcode").val(nodeId);//parent code
+		var nodeName = $("#menuname").val();//名称
+		var menuHref = $("#menuhref").val();//链接
+		
+		var level = treeNode.level;//当前节点级别
+		var willAddedLevel = level + 1;
+		var level = $("#level").val(willAddedLevel);//级别
+		
+		if(nodeName == ""){
+			$.scojs_message("请输入子节点名称", $.scojs_message.TYPE_ERROR);
+			$("#menuname").focus();
+			return false;
+		}
+		if(menuHref == ""){
+			$.scojs_message("请输入链接值", $.scojs_message.TYPE_ERROR);
+			$("#menuhref").focus();
+			return false;
+		}
+    	var argObj = {};//参数
     	argObj = getArgObj("menuForm");
     	console.log("argObj:"+JSON.stringify(argObj));
     	$.ajax({
@@ -243,9 +259,10 @@
 			   		var nodeId = jsonData.obj.menucode;
 			   		var parentId = jsonData.obj.parentcode;
 			   		var nodeName = jsonData.obj.menuname;
+			   		var url = jsonData.obj.url;
 			   		
 			   		var zTree = $.fn.zTree.getZTreeObj("menuManage");//获取zTree对象
-	                zTree.addNodes(treeNode, {id:nodeId, pId:parentId, name:nodeName});
+	                zTree.addNodes(treeNode, {id:nodeId, pId:parentId, name:nodeName,url:url});
 		      		$.scojs_message("成功添加", $.scojs_message.TYPE_OK);
 		   		}else if(code == 1){
 		      		$.scojs_message("已经存在相同的记录", $.scojs_message.TYPE_ERROR);
