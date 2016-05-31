@@ -109,7 +109,6 @@
     		   	success:function(data,status){
     	      		//$.scojs_message("information load success", $.scojs_message.TYPE_OK);
     		   		var jsonData = $.parseJSON(data);
-    		   		console.log("==>loaded menu data"+data);
     		   		$.fn.zTree.init($("#myTree"), myTreeSetting, jsonData);
     		   	},
     	      	complete:function(XMLHttpRequest,status){
