@@ -45,7 +45,7 @@ public class HttpTest extends TestBase {
 		try {
 			uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
 			httppost.setEntity(uefEntity);
-			logger.info("executing request " + httppost.getURI());
+			System.out.println("executing request " + httppost.getURI());
 			CloseableHttpResponse response = httpclient.execute(httppost);
 			try {
 				HttpEntity entity = response.getEntity();

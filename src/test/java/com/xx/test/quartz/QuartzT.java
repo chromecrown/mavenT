@@ -24,7 +24,7 @@ public class QuartzT {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testStartSchedule(){
 		ScheduleTest schedule = new ScheduleTest();
 //		schedule.startSchedule();

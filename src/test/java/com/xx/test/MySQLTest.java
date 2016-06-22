@@ -34,7 +34,7 @@ public class MySQLTest extends TestBase{
 	public void testGetIPList(){
 		List<IP> lst = new ArrayList<IP>();
 		lst = ipService.getIPLst();
-		logger.info("==>ip list:"+JSON.toJSONString(lst));
+		System.out.println("==>ip list:"+JSON.toJSONString(lst));
 	}
 	
 	/**

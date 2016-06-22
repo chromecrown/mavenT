@@ -35,4 +35,7 @@
     <definition name="webworkerTest" extends="template">
         <put-attribute name="content" value="/WEB-INF/view/tiles/webworkerTest.jsp"/>
     </definition>
+    <definition name="upload" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/tiles/upload.jsp"/>
+    </definition>
 </tiles-definitions> 
