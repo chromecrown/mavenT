@@ -17,6 +17,9 @@
     var serverName = "<%=request.getServerName()%>";
     var contextPath = "<%=request.getContextPath()%>";//server context path
     var serverPort = "<%=request.getServerPort()%>";
+    console.log("request.getRequestURI():" + "<%=request.getRequestURI()%>");
+    console.log("request.getRealPath("/"):" + "<%=request.getRealPath("/")%>");
+    console.log("contextPath:" + contextPath);
     var websocket = null;
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {

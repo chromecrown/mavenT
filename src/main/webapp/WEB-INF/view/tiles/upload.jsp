@@ -3,9 +3,15 @@
 <div>
 file upload
 	<form action="demo/upload" method="post" enctype="multipart/form-data">  
-	    <input type="file" name="file" /> <input type="submit" value="Submit" />
+	    <div>
+	        <input type="file" name="file" />
+	    </div>
+	    <div>
+	        <input type="submit" value="Submit" />
+	    </div>
 	</form>
 	
+	<img alt="fileupload" src="upl/tj.png" />  
 	<img alt="fileupload" src="${fileUrl }" />  
 </div>
 <script>
