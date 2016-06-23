@@ -48,5 +48,9 @@ public class DemoController {
 
 		return "upload";
 	}
-
+	
+	@RequestMapping("/req")
+	public String showRequestMethod(){
+		return "req";
+	}
 }

@@ -31,7 +31,9 @@ public class AppInterceptor implements HandlerInterceptor {
 		boolean isGoOn = false;//请求是否允许继续
 		boolean isAsync = request.isAsyncStarted();
 		String contextPath = request.getContextPath();
+		String loginURL = contextPath + "/login";//login url
 		String uri = request.getRequestURI();
+		System.out.println("==++uri:" + uri + "contextPath:" + contextPath);
 		HttpSession session = request.getSession();
 		System.out.println("class AppInterceptor,method preHandle->contextPath:" + contextPath+" uri:" + uri + " isAsync:"+isAsync);
 		System.out.println("uri.indexOf(/login)------" + uri.indexOf("/login"));
@@ -43,16 +45,16 @@ public class AppInterceptor implements HandlerInterceptor {
 			isGoOn = true;
 			return isGoOn;
 		}else{
-			Object obj = session.getAttribute("logined");//是否已经登录
+			Object obj = session.getAttribute("logined");//get if has logged flag
 			if(null == obj){
 				System.out.println("====== will sendRedirect to login page------");
-				response.sendRedirect("login");
+				response.sendRedirect(loginURL);
 			}else{
 				boolean isLogined = (boolean)obj;
 				System.out.println("obj:===>" + obj);
 				if(isLogined == false){
 					isGoOn = false;
-					response.sendRedirect("login");
+					response.sendRedirect(loginURL);
 					return isGoOn;
 				}else{
 					return true;

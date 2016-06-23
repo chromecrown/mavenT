@@ -61,10 +61,8 @@ public class MainController {
 	@RequestMapping(value="/loadMenuData",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Map<String,Object>> getMenuData(){
-		System.out.println("enter in method getMenuData");
 		List<Map<String,Object>> lstMenu = new ArrayList<Map<String,Object>>();
 		lstMenu = manageService.getMenuLst();
-		System.out.println("will leave method getMenuData");
 		return lstMenu;
 	}
 }

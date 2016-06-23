@@ -38,4 +38,7 @@
     <definition name="upload" extends="template">
         <put-attribute name="content" value="/WEB-INF/view/tiles/upload.jsp"/>
     </definition>
+    <definition name="req" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/tiles/req.jsp"/>
+    </definition>
 </tiles-definitions> 
