@@ -14,10 +14,14 @@
 </div>
 
 <script type="text/javascript">
+    var serverName = "<%=request.getServerName()%>";
+    var contextPath = "<%=request.getContextPath()%>";//server context path
+    var serverPort = "<%=request.getServerPort()%>";
     var websocket = null;
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:8080/mavenT/websocket");
+    	var websocketPath = "ws://server:#@/websocket".replace("server",serverName).replace("#",serverPort).replace("@",contextPath);
+        websocket = new WebSocket(websocketPath);
     }
     else {
         alert('当前浏览器 Not support websocket')
