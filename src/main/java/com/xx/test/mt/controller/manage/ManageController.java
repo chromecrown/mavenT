@@ -51,6 +51,18 @@ public class ManageController {
 	}
 	
 	/**
+	 * 导航栏菜单数据
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value={"getNaviMenuLst"},method=RequestMethod.POST)
+	@ResponseBody
+	public List<Map<String, Object>> naviMenuLst(){
+		List<Map<String, Object>> menuLst = service.getLevelOneMenuLst();
+		return menuLst;
+	}
+	
+	/**
 	 * add new menu
 	 * 
 	 * @param menuInfo

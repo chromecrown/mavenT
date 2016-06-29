@@ -41,6 +41,13 @@
     where 1=1
     and isEnable=1
   </select>
+  <select id="selectLevelOneMenuLst" resultMap="BaseResultMap">
+    select menuCode,menuName,menuHref,parentCode,target,level
+    from t_menu
+    where 1=1 and level=1
+    and isEnable=1
+    order by weight desc
+  </select>
   <select id="selectCount" resultType="java.lang.Integer" >
     select count(1)
     from t_menu
