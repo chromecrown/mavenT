@@ -116,7 +116,6 @@
 	
 	//单击节点
 	function nodeClick(event, treeId, treeNode){
-		console.log("after click==>"+JSON.stringify(treeNode));
 		 var nodeName = treeNode.name;
 		 var href = treeNode.url;
 		 var level = treeNode.level;
