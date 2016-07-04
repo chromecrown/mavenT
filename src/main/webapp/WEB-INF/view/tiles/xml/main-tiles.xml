@@ -26,8 +26,8 @@
     <definition name="ip" extends="template">  
         <put-attribute name="content" value="/WEB-INF/view/tiles/ip.jsp"/>  
     </definition>  
-    <definition name="manage" extends="template">  
-        <put-attribute name="content" value="/WEB-INF/view/tiles/manage.jsp"/>  
+    <definition name="manageMenu" extends="template">  
+        <put-attribute name="content" value="/WEB-INF/view/tiles/manageMenu.jsp"/>  
     </definition>
     <definition name="websocket" extends="template">
         <put-attribute name="content" value="/WEB-INF/view/tiles/websocket.jsp"/>

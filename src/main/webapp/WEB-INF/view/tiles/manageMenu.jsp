@@ -41,6 +41,9 @@
 	            ID<input type="text" id="menucode" name="menucode" readonly/>
             </div>
             <div>
+	            权重<input type="text" id="weight" name="weight"/>
+            </div>
+            <div>
 	            <input type="button" id="addBtn" value="新增"/>
 	            <input type="button" id="editBtn" value="修改"/>
 	            <input type="button" id="delBtn" value="删除"/>
@@ -116,17 +119,21 @@
 	
 	//单击节点
 	function nodeClick(event, treeId, treeNode){
+		console.info("nodeClick==>treeNode:"+JSON.stringify(treeNode));
 		 var nodeName = treeNode.name;
 		 var href = treeNode.url;
 		 var level = treeNode.level;
 		 var id = treeNode.id;
 		 var pId = treeNode.pId;
 		 var target = treeNode.target;
+		 var weight = treeNode.weight;
+		 console.log("***weight:" + weight);
 		 $("#menuname").val(nodeName);
 		 $("#menuhref").val(href);
 		 $("#level").val(level);
 		 $("#menucode").val(id);
 		 $("#parentcode").val(pId);
+		 $("#weight").val(weight);
 		 //$("#target").val(target);
 		 $("select option[value='"+target+"']").attr("selected", "selected"); 
 	}
