@@ -28,4 +28,10 @@ public interface MenuInfoMapper {
      * @return
      */
     List<MenuInfo> selectMenuLst();
+    
+    /**
+     * 所有一级菜单节点列表
+     * @return
+     */
+    List<MenuInfo> selectLevelOneMenuLst();
 }

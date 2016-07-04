@@ -36,17 +36,17 @@
     and menuName = #{menuname,jdbcType=VARCHAR}
   </select>
   <select id="selectMenuLst" resultMap="BaseResultMap" >
-    select menuCode,menuName,menuHref,parentCode,target
+    select menuCode,menuName,menuHref,parentCode,target,weight
     from t_menu
     where 1=1
     and isEnable=1
   </select>
   <select id="selectLevelOneMenuLst" resultMap="BaseResultMap">
-    select menuCode,menuName,menuHref,parentCode,target,level
+    select menuCode,menuName,menuHref,parentCode,target,level,weight
     from t_menu
     where 1=1 and level=1
     and isEnable=1
-    order by weight desc
+    order by weight asc
   </select>
   <select id="selectCount" resultType="java.lang.Integer" >
     select count(1)

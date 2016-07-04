@@ -55,18 +55,15 @@ public class ManageServiceImpl implements IManageService{
 	public List<Map<String, Object>> getMenuLst() {
 		List<MenuInfo> menuLst = menuInfoMapper.selectMenuLst();
 		List<Map<String, Object>> lst = new ArrayList<Map<String,Object>>();
-		int len = menuLst.size();
-		for(int i=0;i < len ;i++){
-			Map<String, Object> map = new HashMap<String,Object>();
-			MenuInfo obj = menuLst.get(i);
-			map.put("id", obj.getMenucode());
-			map.put("pId", obj.getParentcode());
-			map.put("name", obj.getMenuname());
-			map.put("url", obj.getMenuhref());
-			map.put("target", obj.getTarget());
-			map.put("level", obj.getLevel());
-			lst.add(map);
-		}
+		lst = menuObj2MapLst(menuLst);
+		return lst;
+	}
+	
+	@Override
+	public List<Map<String, Object>> getLevelOneMenuLst(){
+		List<MenuInfo> menuLst = menuInfoMapper.selectLevelOneMenuLst();
+		List<Map<String, Object>> lst = new ArrayList<Map<String,Object>>();
+		lst = menuObj2MapLst(menuLst);
 		return lst;
 	}
 
@@ -76,5 +73,27 @@ public class ManageServiceImpl implements IManageService{
 		return effectedNum;
 	}
 	
-	
+	/**
+	 * menu对象转换为map 列表
+	 * 
+	 * @param menuLst
+	 * @return
+	 */
+	private List<Map<String, Object>>  menuObj2MapLst(List<MenuInfo> menuLst){
+		List<Map<String, Object>> lst = new ArrayList<Map<String,Object>>();
+		int len = menuLst.size();
+		for(int i=0;i < len; i++){
+			Map<String, Object> map = new HashMap<String,Object>();
+			MenuInfo obj = menuLst.get(i);
+			map.put("id", obj.getMenucode());
+			map.put("pId", obj.getParentcode());
+			map.put("name", obj.getMenuname());
+			map.put("url", obj.getMenuhref());
+			map.put("target", obj.getTarget());
+			map.put("level", obj.getLevel());
+			map.put("weight", obj.getWeight());
+			lst.add(map);
+		}
+		return lst;
+	}
 }

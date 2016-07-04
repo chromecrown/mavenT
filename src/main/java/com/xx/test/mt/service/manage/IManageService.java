@@ -32,6 +32,13 @@ public interface IManageService {
 	public List<Map<String, Object>> getMenuLst();
 	
 	/**
+	 * 获取所有一级菜单列表
+	 * 
+	 * @return
+	 */
+	public List<Map<String, Object>> getLevelOneMenuLst();
+	
+	/**
 	 * 更新菜单信息
 	 * 
 	 * @return

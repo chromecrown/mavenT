@@ -32,10 +32,10 @@ public class ManageController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value={"/",""})
+	@RequestMapping(value={"/menu",""})
 	public String showManagePage(){
 		System.out.println("enter method showIPPage=>");
-		return "manage";
+		return "manageMenu";
 	}
 	
 	/**
