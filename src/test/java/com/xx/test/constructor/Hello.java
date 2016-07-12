@@ -25,9 +25,9 @@ public class Hello {
 
 	public static void main(String[] args) {
 //		A ab = new A();
-//		A ab = new B();
-		new B();
 		A ab = new B();
+		//new B();
+		ab = new B();
 	}
 
 }
