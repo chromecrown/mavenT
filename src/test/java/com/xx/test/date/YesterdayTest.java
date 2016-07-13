@@ -1,5 +1,6 @@
 package com.xx.test.date;
 import java.util.Calendar;
+import java.time.LocalDateTime;
 
 /**
  * print yesterday date
@@ -14,6 +15,10 @@ public class YesterdayTest {
 		cal.add(Calendar.DATE, -1);
 		System.out.println(cal.getTime());
 
+		//Java 8
+		LocalDateTime today = LocalDateTime.now();
+		LocalDateTime yesterday = today.minusDays(1);
+		System.out.println(yesterday);
 	}
 
 }
