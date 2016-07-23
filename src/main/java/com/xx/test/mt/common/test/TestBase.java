@@ -18,7 +18,6 @@ public class TestBase {
 	 */
 	@Before
 	public void before() {
-
 	}
 	
 	/**
@@ -26,6 +25,5 @@ public class TestBase {
 	 */
 	@After
 	public void teardown(){
-		
 	}
 }
