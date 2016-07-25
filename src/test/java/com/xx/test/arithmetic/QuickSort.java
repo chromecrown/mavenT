@@ -1,5 +1,8 @@
 package com.xx.test.arithmetic;
 
+import java.util.Arrays;
+import org.apache.commons.lang.ArrayUtils;
+
 /**
  * 1、以第一个关键字K1为控制字，将[k1,k2,...,kn]分成两个子区，
  * 使左区所有关键字小于等于k1,右区所有关键字大于等于k1，
@@ -12,18 +15,29 @@ package com.xx.test.arithmetic;
 public class QuickSort {
 
 	public static void main(String[] args) {
-		
+		Integer[] a = new Integer[100];
+		try {
+			a = RandomGen.getRandom(1, 200, 100);
+			System.out.println("a==>"+Arrays.toString(a));
+			int[] b = ArrayUtils.toPrimitive(a);
+			quicksort(b, 0, b.length-1);
+			System.out.println("b==>"+Arrays.toString(a));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	static int partition(int n[],int left,int right){
 		int pivot = n[left];
 		while(left < right){
-			while(left < right && n[right]>=pivot)
+			while(left < right && n[right]>=pivot){
 				right --;
+			}
 			if(left < right)
 				n[left++] = n[right];
-			while(left < right && n[left] <= pivot)
+			while(left < right && n[left] <= pivot){
 				left ++;
+			}
 			if(left < right)
 				n[right--] = n[left];
 		}
