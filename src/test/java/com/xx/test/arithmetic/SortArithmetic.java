@@ -12,7 +12,7 @@ import org.apache.commons.lang.ArrayUtils;
  * @author wq
  *
  */
-public class QuickSort {
+public class SortArithmetic {
 
 	public static void main(String[] args) {
 		Integer[] a = new Integer[100];
@@ -21,7 +21,7 @@ public class QuickSort {
 			System.out.println("a==>"+Arrays.toString(a));
 			int[] b = ArrayUtils.toPrimitive(a);
 			quicksort(b, 0, b.length-1);
-			System.out.println("b==>"+Arrays.toString(a));
+			System.out.println("b==>"+Arrays.toString(b));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,8 +33,9 @@ public class QuickSort {
 			while(left < right && n[right]>=pivot){
 				right --;
 			}
-			if(left < right)
+			if(left < right){
 				n[left++] = n[right];
+			}
 			while(left < right && n[left] <= pivot){
 				left ++;
 			}
