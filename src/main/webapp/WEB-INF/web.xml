@@ -1,14 +1,13 @@
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 3.0//EN"
+ "http://java.sun.com/dtd/web-app_3_0.dtd" >
+<web-app>
   <display-name>mavenT</display-name>
-  
+
   <!-- 设置session失效，单位分 -->
 　　<session-config>
-　　    <session-timeout>5</session-timeout>
-　　</session-config>
-
+        <session-timeout>5</session-timeout>
+    </session-config>
   <!-- Spring应用上下文， 理解层次化的ApplicationContext -->
   <context-param>
  		<param-name>contextConfigLocation</param-name>
