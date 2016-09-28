@@ -75,12 +75,6 @@ public class SortArithmetic {
 		return left;
 	}
 	
-	/**
-	 * 快速排序
-	 * @param n
-	 * @param left
-	 * @param right
-	 */
 	static void quicksort(int n[],int left,int right){
 		int dp;
 		if(left < right){
