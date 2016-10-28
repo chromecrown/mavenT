@@ -28,12 +28,15 @@
 
 	<!-- 静态资源处理， css， js， imgs -->
 	<mvc:resources mapping="resource/**" location="/WEB-INF/resource/" />
-	<mvc:resources mapping="upl/**" location="/upload/" />
+	<mvc:resources mapping="upload/**" location="/upload/" />
 	
 	<!-- 拦截器配置 -->
 	<mvc:interceptors>  
         <mvc:interceptor>  
-            <mvc:mapping path="/**"/>  
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/dologin"/>
+            <mvc:exclude-mapping path="/logout"/>
             <bean class="com.xx.test.mt.common.interceptor.AppInterceptor"/>  
         </mvc:interceptor>  
     </mvc:interceptors>
