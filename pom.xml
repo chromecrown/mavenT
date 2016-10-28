@@ -200,6 +200,24 @@
 	<build>
 		<finalName>mavenT</finalName>
 		<plugins>
+		    <plugin>
+		        <groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.2.v20140723</version>
+				<configuration>
+                    <httpConnector>
+                        <port>9131</port>
+                    </httpConnector>       
+                    <webAppConfig>
+                        <!-- 
+                        <contextPath> /${project.artifactId}</contextPath> 
+                        -->
+                        <contextPath>/tt</contextPath>
+                    </webAppConfig>
+                    <scanIntervalSeconds>2</scanIntervalSeconds>
+                    <!-- 指定监控的扫描时间间隔，0为关闭jetty自身的热部署，主要是为了使用jrebel -->
+                </configuration>
+		    </plugin>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
