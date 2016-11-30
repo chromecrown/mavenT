@@ -35,6 +35,7 @@ public class File2Code {
         out.write(buffer);
         out.close();
     }
+    
     /**
      * <p>将base64字符保存文本文件</p>
      * @param base64Code
@@ -49,10 +50,10 @@ public class File2Code {
     }
     public static void main(String[] args) {
         try {
-            String base64Code =encodeBase64File("D:\\1.jpg");
+            String base64Code = encodeBase64File("/Users/wq/Pictures/3.jpg");
             System.out.println(base64Code);
-            decoderBase64File(base64Code, "D:\\2.jpg");
-            toFile(base64Code, "D:\\three.txt");            
+            decoderBase64File(base64Code, "/Users/wq/Pictures/3-b.jpg");
+            toFile(base64Code, "/Users/wq/Pictures/3.txt");            
         } catch (Exception e) {
             e.printStackTrace();
         }

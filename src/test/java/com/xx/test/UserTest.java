@@ -2,15 +2,16 @@ package com.xx.test;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
 import com.alibaba.fastjson.JSON;
-import com.xx.test.mt.common.test.TestBase;
 import com.xx.test.mt.model.UserInfo;
 import com.xx.test.mt.service.mgr.usr.IUserService;
 
-public class UserTest extends TestBase{
+public class UserTest{
 	
 	private IUserService userService;
 	

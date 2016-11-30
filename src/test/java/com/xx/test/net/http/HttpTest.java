@@ -17,9 +17,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-import com.xx.test.mt.common.test.TestBase;
-
-public class HttpTest extends TestBase {
+public class HttpTest {
 
 	/**
 	 * test http request

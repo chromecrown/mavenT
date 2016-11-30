@@ -2,9 +2,7 @@ package com.xx.test;
 
 import org.junit.Test;
 
-import com.xx.test.mt.common.test.TestBase;
-
-public class RedisTest extends TestBase{
+public class RedisTest{
 	
 	
 	@Test
