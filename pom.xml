@@ -195,6 +195,18 @@
 	        </exclusions>
 		    <version>2.2.3</version>
 		</dependency>
+		<!-- 常用的java工具类封装 -->
+		<dependency>
+	            <groupId>cn.hutool</groupId>
+	            <artifactId>hutool-all</artifactId>
+	            <version>4.5.15</version>
+	        </dependency>
+	        <!-- FTP客户端封装 -->
+                <dependency>
+                    <groupId>commons-net</groupId>
+                    <artifactId>commons-net</artifactId>
+                    <version>3.6</version>
+                </dependency>
 	</dependencies>
 	
 	<build>
