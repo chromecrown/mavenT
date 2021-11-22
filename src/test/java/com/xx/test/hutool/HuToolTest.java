@@ -6,6 +6,10 @@ import cn.hutool.core.util.RuntimeUtil;
 
 public class HuToolTest {
 	
+	/**
+	 * - 运行环境，安装python3，加入化境变量
+	 * - maven依赖hutool包
+	 */
 	@Test
 	public void testJava8MethodRef(){
 		// 调用系统命令
