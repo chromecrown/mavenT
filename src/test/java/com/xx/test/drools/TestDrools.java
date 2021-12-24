@@ -10,7 +10,7 @@ import com.chenj.entity.Order;
 public class TestDrools {
 	@Test
 	public void testDrools_1() {
-		KieServices kieServices = new KieServices.Factory().get();
+		KieServices kieServices = KieServices.Factory.get();
 		KieContainer kieContainer = kieServices.getKieClasspathContainer();
 		// 会话对象，用于和规则引擎交互
 		KieSession kieSession = kieContainer.newKieSession();
