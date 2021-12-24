@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+	<!-- 这里的packages属性就是规则文件的文件路径 -->
+	<kbase name="myKbase1" packages="rules" default="true">
+		<ksession name="ksession-rule" default="true" />
+	</kbase>
+</kmodule>

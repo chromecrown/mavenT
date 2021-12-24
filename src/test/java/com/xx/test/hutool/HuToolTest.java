@@ -1,5 +1,8 @@
 package com.xx.test.hutool;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 
 import cn.hutool.core.util.RuntimeUtil;
@@ -47,5 +50,14 @@ public class HuToolTest {
 		// 调用系统命令
 		String str = RuntimeUtil.execForStr("python F:\\Workspaces\\eclipse202109\\pyGrabShop\\com\\zq\\py\\BrowseShopAllChips.py -u " + "https://www.allchips.com/detail84237595");
 		System.out.println("【硬之城】价格信息：" + str);
+	}
+	
+	@Test
+	public void testStringSplit(){
+		// 调用系统命令
+		String str = "AC1313";
+		String[] strArr = str.split(" ");
+		List<String> strList = Arrays.asList(strArr);
+		System.out.println("strList.size():" + strList.size());
 	}
 }
