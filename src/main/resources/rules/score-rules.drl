@@ -14,7 +14,7 @@ end
  // 规则2：100元-500元 加100分
 rule "score_2"
 when
-    $order: Order(amout > 100 && amout <= 500)
+    $order: Order(amout > 100 , amout <= 500)
 then
     $order.setScore(100);
     System.out.println("成功匹配到 规则2：100元-500元 加100分");

@@ -1,0 +1,87 @@
+package rules;
+
+import com.chenj.entity.*;
+
+// 测试contains操作符 
+rule "rule_1"
+    when
+        $order:Order();
+        $customer:Customer(orderList contains $order);
+    then
+        System.out.println("出发规则 orderList 包含 $order...");
+end
+
+// 测试not contains操作符 
+rule "rule_2"
+    when
+        $order:Order();
+        $customer:Customer(orderList not contains $order);
+    then
+        System.out.println("触发规则 orderList 不包含 $order...");
+end
+
+// 测试比较操作符 matches 
+rule "rule_3"
+    when
+        Customer(name matches "张.*");
+    then
+        System.out.println("触发规则 测试比较操作符 matches ");
+end
+
+// 测试not contains操作符 
+rule "rule_4"
+    when
+        Customer(name not matches "张.*");
+    then
+        System.out.println("触发规则 测试not contains操作符");
+end
+
+// 测试 insert函数 
+rule "rule_5"
+    when
+        eval(true);
+    then
+        Customer cus = new Customer();
+        cus.setName("张三");
+        //insert(cus);
+        System.out.println("测试Drools提供的内置方法insert 触发...");
+end
+
+rule "rule_6"
+    when
+        $customer:Customer(name ==  "张三");
+    then
+        System.out.println("测试Drools提供的内置方法insert 触发..." + $customer.getName());
+end
+
+rule "rule_7"
+    no-loop true
+    when
+        $customer:Customer(name ==  "李四");
+    then
+        $customer.setName("张三");
+        update($customer);
+        System.out.println("测试Drools提供的内置方法update 触发...");
+end
+
+rule "rule_8"
+    when
+        $customer:Customer(name ==  "张三");
+    then
+        System.out.println("测试Drools提供的内置方法update 触发..." + $customer.getName());
+end
+
+rule "rule_9"
+    when
+        $customer:Customer(name ==  "李四");
+        retract($customer);
+    then
+        System.out.println("测试Drools提供的内置方法retract 触发...");
+end
+
+rule "rule_10"
+    when
+        $customer:Customer();
+    then
+        System.out.println("测试Drools提供的内置方法retract 触发..." + $customer.getName());
+end
